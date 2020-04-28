@@ -1,18 +1,7 @@
 {
-  "name": "carbonisep-client",
-  "version": "0.0.0",
-  "description": "",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/omnitrogen/carbonisep.git"
-  },
-  "author": "Triangle des Bermudes",
-  "license": "Unlicense",
-  "bugs": {
-    "url": "https://github.com/omnitrogen/carbonisep/issues"
-  },
-  "homepage": "https://github.com/omnitrogen/carbonisep#readme",
+  "name": "myfirstreact",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
