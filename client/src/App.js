@@ -4,13 +4,15 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Navbar1 from './components/templates/Navbar1';
-import About from './components/main/About';
+import Home from './components/main/Test';
+import StaticFooter from './components/templates/StaticFooter';
 
 function App() {
     return (
       <>
-          <Navbar1/>
-          <About/>
+          <Navbar1 />
+          <Home/>
+          <StaticFooter/>
       </>
   );
 }

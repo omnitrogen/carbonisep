@@ -2,6 +2,8 @@
 import React, { Component } from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Nav from 'react-bootstrap/Nav';
+import JoinOrCreateGame from "../templates/JoinOrCreateGame";
 
 export default class About extends Component {
     render() {
@@ -10,37 +12,37 @@ export default class About extends Component {
                 <div className="border border-dark rounded w-80 p-4">
                     <h1>Pourquoi CarbonISEP ?</h1>
                     <p>
-                        Tout le monde se soucie de l'écologie, mais la masse d’informations disponibles en effraie plus d’un…
+                        Tout le monde se soucie de l'Ã©cologie, mais la masse dâ€™informations disponibles en effraie plus dâ€™unâ€¦
                         <br/>
-                        Comment savoir quoi faire pour réduire ses émissions de CO2?
+                        Comment savoir quoi faire pour rÃ©duire ses Ã©missions de CO2?
                         <br />
-                        CarbonISEP est un jeu que tu peux faire avec tes potes ou avec ta classe pour découvrir les actions que chacun peut réaliser pour diminuer ses émissions.
+                        CarbonISEP est un jeu que tu peux faire avec tes potes ou avec ta classe pour dÃ©couvrir les actions que chacun peut rÃ©aliser pour diminuer ses Ã©missions.
                         <br />
-                        On aide chaque joueur à prendre conscience de son empreinte carbone, et on lui suggère des actions pour la diminuer.
+                        On aide chaque joueur Ã  prendre conscience de son empreinte carbone, et on lui suggÃ¨re des actions pour la diminuer.
                     </p>
-                    <h2>Règles du jeu</h2>
+                    <h2>RÃ¨gles du jeu</h2>
                     <p>
                         JOLIE PHOTO DE PARTIE MULTI
                         <br/>
-                        Le principe est simple. A chaque tour de jeu, tu dois choisir une action à effectuer pour réduire ton empreinte carbone
+                        Le principe est simple. A chaque tour de jeu, tu dois choisir une action Ã  effectuer pour rÃ©duire ton empreinte carbone
                         <br/>
-                        Tu disposes de ressources temps et argent. Faire une action nécessitera de consommer ses ressources, et en échange tu gagnes des points.
+                        Tu disposes de ressources temps et argent. Faire une action nÃ©cessitera de consommer ses ressources, et en Ã©change tu gagnes des points.
                         <br/>
-                        Essaie de trouver les meilleures pratiques écologiques pour gagner un max de points!
+                        Essaie de trouver les meilleures pratiques Ã©cologiques pour gagner un max de points!
                         <br/>
                         <br/>
-                        Tu pourrais même apprendre une chose ou deux au passage!
+                        Tu pourrais mÃªme apprendre une chose ou deux au passage!
                         <br/>
-                        Rejoins la partie dès maintenant
+                        Rejoins la partie dÃ¨s maintenant
                         <br/>
-                        METTRE REJOINDRE ET CREER PARTIE
+                        <JoinOrCreateGame/>
                     </p>
 
                     <h2>Conseils et Astuces</h2>
                     <p>
-                        Tu veux en savoir plus sur les actions écologiques possibles ou tu veux apprendre plein de gestes écolos cools?
+                        Tu veux en savoir plus sur les actions Ã©cologiques possibles ou tu veux apprendre plein de gestes Ã©colos cools?
                         <br />
-                        Va voir nos Conseils! LIEN CONSEILS ET ASTUCES
+                        Va voir nos <a href="tips">Conseils et Astuces</a> pour en savoir plus
                     </p>
                 </div>
             </div>

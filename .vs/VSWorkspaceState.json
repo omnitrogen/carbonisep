@@ -1,4 +1,5 @@
 {
+  "files.encoding": "utf8",
   "ExpandedNodes": [
     "",
     "\\client",
@@ -11,6 +12,5 @@
     "\\server",
     "\\server\\routes"
   ],
-  "SelectedNode": "\\client\\src\\components\\main\\Home.js",
   "PreviewInSolutionExplorer": false
 }

@@ -21,7 +21,7 @@ export default class Tips extends Component {
                         </Button>
                     </Nav.Link>
                     <p>Sinon en voilà quelques-uns:</p>
-                    <p>Grosse re^quête à la BDD des actions juste iciEIUGZFIUEZGFIUEGZJIJFZE</p>
+                    <p>Grosse requête à la BDD des actions juste iciEIUGZFIUEZGFIUEGZJIJFZE</p>
                 </div>
             </div>
         );
