@@ -12,8 +12,8 @@ class Navbar1 extends React.Component {
                     <Navbar.Brand href="home"><img src={logo} className="" alt="logo" /></Navbar.Brand>
                     <Nav className="mr-auto">
                         <Nav.Link href="home">Acceuil</Nav.Link>
-                        <Nav.Link href="about">CarbonISEP en quelques mots</Nav.Link>
-                        <Nav.Link href="tips">Tips and Tricks</Nav.Link>
+                        <Nav.Link href="about" className="px-4">A propos</Nav.Link>
+                        <Nav.Link href="tips">Conseils et astuces</Nav.Link>
                     </Nav>
                     <Nav.Link href="connexion">Connexion</Nav.Link>
                 </Navbar>

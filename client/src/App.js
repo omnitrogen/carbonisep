@@ -4,13 +4,13 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Navbar1 from './components/templates/Navbar1';
-import Login from './components/main/Login';
+import About from './components/main/About';
 
 function App() {
     return (
       <>
           <Navbar1/>
-          <Login/>
+          <About/>
       </>
   );
 }

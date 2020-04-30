@@ -4,9 +4,13 @@
     "\\client",
     "\\client\\public",
     "\\client\\src",
+    "\\client\\src\\assets",
+    "\\client\\src\\components",
+    "\\client\\src\\components\\main",
+    "\\client\\src\\components\\templates",
     "\\server",
     "\\server\\routes"
   ],
-  "SelectedNode": "\\client\\public\\robots.txt",
+  "SelectedNode": "\\client\\src\\components\\main\\Home.js",
   "PreviewInSolutionExplorer": false
 }
