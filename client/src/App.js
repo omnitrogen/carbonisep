@@ -4,7 +4,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Navbar1 from './components/templates/Navbar1';
-import Home from './components/main/Test';
+import Home from './components/main/Home';
 import StaticFooter from './components/templates/StaticFooter';
 
 function App() {
