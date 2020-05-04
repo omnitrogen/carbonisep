@@ -2,9 +2,9 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import logo from '../../assets/carbonisep/favicon.ico';
+import logo from '../../../assets/carbonisep/favicon.ico';
 
-class Navbar1 extends React.Component {
+export default class Navbar1 extends React.Component {
     render() {
         return (
             <div>
@@ -21,5 +21,3 @@ class Navbar1 extends React.Component {
         );
     };
 };
-
-export default Navbar1;
