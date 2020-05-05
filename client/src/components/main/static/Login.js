@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
+const API = "http://localhost:8000/";
+
 export default class Login extends Component {
     constructor() {
         super();
