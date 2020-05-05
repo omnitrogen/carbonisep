@@ -1,24 +1,24 @@
 {
-  "name": "carbonisep-server",
-  "version": "0.0.0",
-  "description": "Triangle des Bermudes",
-  "main": "index.js",
-  "scripts": {
-    "start": "nodemon --inspect --watch src index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/omnitrogen/carbonisep.git"
-  },
-  "author": "Triangle des Bermudes",
-  "license": "Unlicense",
-  "bugs": {
-    "url": "https://github.com/omnitrogen/carbonisep/issues"
-  },
-  "homepage": "https://github.com/omnitrogen/carbonisep#readme",
-  "dependencies": {
-    "better-sqlite3": "^7.0.1",
-    "express": "^4.17.1",
-    "nodemon": "^2.0.3"
-  }
+    "name": "carbonisep-server",
+    "version": "0.0.0",
+    "description": "Triangle des Bermudes",
+    "main": "index.js",
+    "scripts": {
+        "start": "nodemon --inspect --watch route"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/omnitrogen/carbonisep.git"
+    },
+    "author": "Triangle des Bermudes",
+    "license": "Unlicense",
+    "bugs": {
+        "url": "https://github.com/omnitrogen/carbonisep/issues"
+    },
+    "homepage": "https://github.com/omnitrogen/carbonisep#readme",
+    "dependencies": {
+        "express": "^4.17.1",
+        "nodemon": "^2.0.3",
+        "sqlite3": "^4.2.0"
+    }
 }

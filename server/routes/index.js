@@ -1,15 +1,22 @@
+var model = require("./model.js");
+
 var express = require("express");
 
 const router = express.Router();
 
-const db = require("better-sqlite3")("carbonisep.db");
-
-router.get("/hello", function getVersion(req, res) {
-    const row = db.prepare("SELECT * FROM test where test_id = ?").get(0);
-    return res.json({
+router.get("/hello", function getVersion(request, response) {
+    console.log("yay");
+    const row = test();
+    return response.json({
         message: String("Queried from database" + row.test_id + " " + row.name),
     });
-    // return res.json({ message: "Test" });
+});
+router.get("/login", function getVersion(request, response) {
+    response = model.function;
+
+    return response.json({
+        element1: test,
+    });
 });
 
 module.exports = router;
