@@ -11,17 +11,17 @@ export default class Tips extends Component {
                 <div className="border border-dark rounded w-80 p-4">
                     <h1>Conseils et Astuces</h1>
                     <p>
-                        Ici tu peux avoir quelques tips pour être plus écolo.
+                        Ici tu peux avoir quelques tips pour Ãªtre plus Ã©colo.
                         <br />
-                        Si tu veux qu’on te propose des tips sur-mesure et faciles à faire, tu peux répondre à un questionnaire en te connectant et on t’aidera
+                        Si tu veux qu'on te propose des tips sur-mesure et faciles Ã  faire, tu peux rÃ©pondre Ã  un questionnaire en te connectant et on t'aidera
                     </p>
                     <Nav.Link href="connexion">
                         <Button variant="primary">
-                            Connecte-toi pour répondre au questionnaire!
+                            Connecte-toi pour rÃ©pondre au questionnaire!
                         </Button>
                     </Nav.Link>
-                    <p>Sinon en voilà quelques-uns:</p>
-                    <p>Grosse requête à la BDD des actions juste iciEIUGZFIUEZGFIUEGZJIJFZE</p>
+                    <p>Sinon en voilÃ  quelques-uns:</p>
+                    <p>Grosse requÃªte Ã  la BDD des actions juste iciEIUGZFIUEZGFIUEGZJIJFZE</p>
                 </div>
             </div>
         );
