@@ -1,6 +1,4 @@
 import React from "react";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
 import ProfileNavbar from "./ProfileNavbar";
 import SideNavbar from "./SideNavbar";
 import FriendsNavbar from "./FriendsNavbar";

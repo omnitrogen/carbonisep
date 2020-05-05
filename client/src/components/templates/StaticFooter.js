@@ -1,7 +1,6 @@
 import React from "react";
 import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import logo from "../../assets/carbonisep/favicon.ico";
+import logo from "../../assets/carbonisep.png";
 import triangleBermudes from "../../assets/triangleBermudes.png";
 
 export default class Footer extends React.Component {
@@ -13,7 +12,7 @@ export default class Footer extends React.Component {
                     style={{ backgroundColor: "#88B03C" }}
                 >
                     <Navbar.Brand href="home">
-                        <img src={logo} className="" alt="logo" />
+                        <img src={logo} style={{ zoom: 0.05 }} alt="logo" />
                     </Navbar.Brand>
                     <p>
                         Copyright 2020. Tous droits réservés. En cas de
@@ -21,7 +20,7 @@ export default class Footer extends React.Component {
                     </p>
                     <img
                         src={triangleBermudes}
-                        style={{ width: "6%" }}
+                        style={{ zoom: "0.06" }}
                         alt="Triangle des Bermudes"
                     />
                 </div>
