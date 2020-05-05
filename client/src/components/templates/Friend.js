@@ -1,8 +1,5 @@
-
-import React from 'react';
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
-import Avatar from './Avatar';
+import React from "react";
+import Avatar from "./Avatar";
 
 export default class Friend extends React.Component {
     render() {
@@ -14,5 +11,5 @@ export default class Friend extends React.Component {
                 </div>
             </div>
         );
-    };
-};
+    }
+}

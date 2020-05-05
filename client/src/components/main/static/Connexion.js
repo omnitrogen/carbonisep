@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React from "react";
 
 class Connexion extends React.Component {
     render() {
