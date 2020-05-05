@@ -1,0 +1,17 @@
+{
+  "files.encoding": "utf8",
+  "ExpandedNodes": [
+    "",
+    "\\client",
+    "\\client\\src",
+    "\\client\\src\\assets",
+    "\\client\\src\\components",
+    "\\client\\src\\components\\main",
+    "\\client\\src\\components\\templates",
+    "\\client\\src\\components\\templates\\nav",
+    "\\server",
+    "\\server\\routes"
+  ],
+  "SelectedNode": "\\client\\src\\components\\templates\\nav\\SideNavbar.js",
+  "PreviewInSolutionExplorer": false
+}

@@ -17,6 +17,7 @@ Ensuite, sur <http://localhost:8000/hello> le message de test devrait apparaitre
 Sur un autre terminal, faire:
 ```
 cd client
+npm install react-bootstrap bootstrap ?
 npm install
 npm start
 ```
