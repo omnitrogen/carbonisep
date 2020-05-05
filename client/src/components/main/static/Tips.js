@@ -1,8 +1,6 @@
-
 import React, { Component } from "react";
-import Button from 'react-bootstrap/Button';
-import Nav from 'react-bootstrap/Nav';
-
+import Button from "react-bootstrap/Button";
+import Nav from "react-bootstrap/Nav";
 
 export default class Tips extends Component {
     render() {
@@ -13,7 +11,9 @@ export default class Tips extends Component {
                     <p>
                         Ici tu peux avoir quelques tips pour être plus écolo.
                         <br />
-                        Si tu veux qu'on te propose des tips sur-mesure et faciles à faire, tu peux répondre à un questionnaire en te connectant et on t'aidera
+                        Si tu veux qu'on te propose des tips sur-mesure et
+                        faciles à faire, tu peux répondre à un questionnaire en
+                        te connectant et on t'aidera
                     </p>
                     <Nav.Link href="connexion">
                         <Button variant="primary">
@@ -21,9 +21,12 @@ export default class Tips extends Component {
                         </Button>
                     </Nav.Link>
                     <p>Sinon en voilà quelques-uns:</p>
-                    <p>Grosse requête à la BDD des actions juste iciEIUGZFIUEZGFIUEGZJIJFZE</p>
+                    <p>
+                        Grosse requête à la BDD des actions juste
+                        iciEIUGZFIUEZGFIUEGZJIJFZE
+                    </p>
                 </div>
             </div>
         );
-    };
+    }
 }

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 export default class Login extends Component {
     render() {
@@ -10,15 +10,24 @@ export default class Login extends Component {
                     <Form className="p-3">
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Adresse mail</Form.Label>
-                            <Form.Control type="email" placeholder="Enter email"/>
+                            <Form.Control
+                                type="email"
+                                placeholder="Enter email"
+                            />
                         </Form.Group>
 
                         <Form.Group controlId="formBasicPassword">
                             <Form.Label>Mot de passe</Form.Label>
-                            <Form.Control type="password" placeholder="Password"/>
+                            <Form.Control
+                                type="password"
+                                placeholder="Password"
+                            />
                         </Form.Group>
                         <Form.Group controlId="formBasicCheckbox">
-                            <Form.Check type="checkbox" label="Se rappeler de moi"/>
+                            <Form.Check
+                                type="checkbox"
+                                label="Se rappeler de moi"
+                            />
                         </Form.Group>
                         <Button variant="primary" type="submit">
                             Connexion
