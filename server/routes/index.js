@@ -1,9 +1,22 @@
-var express = require('express')
+var model = require("./model.js");
 
-const router = express.Router()
+var express = require("express");
 
-router.get('/hello', function getVersion (req, res) {
-    return res.json({message: "Test"})
-})
+const router = express.Router();
 
-module.exports = router
+router.get("/hello", function getVersion(request, response) {
+    console.log("yay");
+    const row = test();
+    return response.json({
+        message: String("Queried from database" + row.test_id + " " + row.name),
+    });
+});
+router.get("/login", function getVersion(request, response) {
+    response = model.function;
+
+    return response.json({
+        element1: test,
+    });
+});
+
+module.exports = router;

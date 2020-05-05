@@ -6,12 +6,12 @@ import Home from "./components/main/static/Home";
 import Tips from "./components/main/static/Tips";
 import Connexion from "./components/main/static/Connexion";
 import StaticFooter from "./components/templates/StaticFooter";
-import ConnectedNavbars from "./components/templates/nav/ConnectedNavbars";
+import Login from "./components/main/static/Login";
 
 function App() {
     return (
         <div>
-            <ConnectedNavbars />
+            <Login />
             <Router
                 className="position-absolute"
                 style={{ left: "15%", right: "15%", overflow: "hidden" }}
