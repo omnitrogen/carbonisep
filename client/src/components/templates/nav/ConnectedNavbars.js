@@ -3,7 +3,6 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import ProfileNavbar from "./ProfileNavbar";
 import SideNavbar from "./SideNavbar";
-import StaticFooter from "../StaticFooter";
 import FriendsNavbar from "./FriendsNavbar";
 
 export default class ConnectedNavbars extends React.Component {
@@ -23,7 +22,6 @@ export default class ConnectedNavbars extends React.Component {
                     ></div>
                     <FriendsNavbar />
                 </div>
-                <StaticFooter />
             </div>
         );
     }
