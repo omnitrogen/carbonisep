@@ -15,6 +15,7 @@ function App() {
     <div>
       <ConnectedNavbars />
       <Router
+        className="position-absolute"
         style={{ left: "15%", right: "15%", overflow: "hidden" }}
       >
         <Switch>

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
-import Nav from "react-bootstrap/Nav";
 
 const noms = ["Jean", "Pierre", "Martin", "Paul", "Fraçois"];
 const listItems = noms.map((nom) => <li>{nom}</li>);
@@ -9,14 +8,15 @@ const url = "www.carbonisep.com/join";
 const lienPartage = url + "?code=" + code;
 
 const owner = false;
-const startbutton = "";
-if (owner) {
-  startbutton = (
-    <Button variant="success" href="home" type="submit">
-      {" "}
-      "Lancer la partie"{" "}
-    </Button>
-  );
+function startbutton() {
+  if (owner) {
+    return (
+      <Button variant="success" href="home" type="submit">
+        {"Lancer la partie"}
+      </Button>
+    );
+  }
+  return "";
 }
 
 function copier() {
@@ -88,7 +88,7 @@ export default class Join extends Component {
           <Button variant="danger" href="home" type="submit">
             Quitter la partie
           </Button>
-          {startbutton}
+          {startbutton()}
         </div>
       </div>
     );
