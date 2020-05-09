@@ -7,11 +7,12 @@ const code = "JFhGZHjHZJH";
 const url = "www.carbonisep.com/join";
 const lienPartage = url + "?code=" + code;
 
-const owner = false;
+const owner = true;
+
 function startbutton() {
   if (owner) {
     return (
-      <Button variant="success" href="home" type="submit">
+      <Button variant="success" href="home" size="lg" type="submit">
         {"Lancer la partie"}
       </Button>
     );
@@ -85,7 +86,7 @@ export default class Join extends Component {
             padding: "50px",
           }}
         >
-          <Button variant="danger" href="home" type="submit">
+          <Button variant="danger" href="home" size="lg" type="submit">
             Quitter la partie
           </Button>
           {startbutton()}
