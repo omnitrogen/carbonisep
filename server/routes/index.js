@@ -12,4 +12,8 @@ router.get("/hello", function getVersion(req, res) {
     // return res.json({ message: "Test" });
 });
 
+router.get("/", (req, res) => {
+    return res.json({ message: "hehe" });
+});
+
 module.exports = router;

@@ -1,8 +1,6 @@
-var express = require("express");
+var app = require("express")();
 var bodyParser = require("body-parser");
 var routes = require("./routes");
-
-const app = express();
 
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
