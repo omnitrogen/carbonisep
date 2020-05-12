@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 
-const noms = ["Jean", "Pierre", "Martin", "Paul", "Fraçois"];
+const noms = ["Jean", "Pierre", "Martin", "Paul", "François"];
 const listItems = noms.map((nom) => <li>{nom}</li>);
-const code = "JFhGZHjHZJH";
-const url = "www.carbonisep.com/join";
-const lienPartage = url + "?code=" + code;
+
+const url = new URL(window.location.href);
+const code = url.searchParams.get("code");
 
 const owner = true;
 
@@ -63,7 +63,7 @@ export default class Join extends Component {
           <input
             readOnly
             id="LienPartage"
-            value={lienPartage}
+            value={url}
             style={{
               width: 500,
               fontSize: 20,
