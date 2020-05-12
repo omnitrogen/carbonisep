@@ -19,4 +19,8 @@ router.get("/login", function getVersion(request, response) {
     });
 });
 
+router.get("/", (req, res) => {
+    return res.json({ message: "hehe" });
+});
+
 module.exports = router;
