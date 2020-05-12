@@ -4,14 +4,12 @@
     "",
     "\\client",
     "\\client\\src",
-    "\\client\\src\\assets",
     "\\client\\src\\components",
     "\\client\\src\\components\\main",
     "\\client\\src\\components\\templates",
     "\\client\\src\\components\\templates\\nav",
-    "\\server",
     "\\server\\routes"
   ],
-  "SelectedNode": "\\client\\src\\components\\templates\\nav\\SideNavbar.js",
+  "SelectedNode": "\\client\\src\\components\\templates\\nav\\Navbar1.js",
   "PreviewInSolutionExplorer": false
 }
