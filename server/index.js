@@ -1,7 +1,9 @@
-var app = require("./app");
-var server = require("http").createServer(app);
-var io = require("socket.io").listen(server);
-var ent = require("ent");
+import app from "./app.js";
+import http from "http";
+const server = http.createServer(app);
+import listen from "socket.io";
+const io = listen(server);
+import ent from "ent";
 
 const PORT = 8000;
 
