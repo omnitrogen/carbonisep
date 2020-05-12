@@ -9,7 +9,7 @@ export default class Navbar1 extends React.Component {
             <div>
                 <Navbar bg="light" variant="light">
                     <Navbar.Brand href="home">
-                        <img src={logo} className="" alt="logo" />
+                        <img src={logo} className="" alt="logo" style={{ width: '8%' }}/>
                     </Navbar.Brand>
                     <Nav className="mr-auto">
                         <Nav.Link href="home">Acceuil</Nav.Link>

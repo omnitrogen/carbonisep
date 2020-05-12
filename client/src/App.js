@@ -9,6 +9,9 @@ import Connexion from "./components/main/static/Connexion";
 import StaticFooter from "./components/templates/StaticFooter";
 import Login from "./components/main/static/Login";
 import Chat from "./components/main/static/Chat";
+import Navbar1 from "./components/templates/nav/Navbar1";
+import ConnectedNavbars from "./components/templates/nav/ConnectedNavbars";
+import Quizz from "./components/main/quizz"
 
 function App() {
     return (
@@ -29,7 +32,7 @@ function App() {
                             <Chat />
                         </Route>
                         <Route path="/">
-                            <Home />
+                            <Quizz/>
                         </Route>
                     </Switch>
                 </Router>

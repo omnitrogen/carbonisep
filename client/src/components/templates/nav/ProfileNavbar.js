@@ -11,7 +11,7 @@ export default class ProfileNavbar extends React.Component {
                     <img
                         src={logo}
                         className=""
-                        style={{ zoom: 0.08 }}
+                        style={{ width: '8%' }}
                         alt="logo"
                     />
                 </Navbar.Brand>
