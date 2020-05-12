@@ -1,6 +1,7 @@
-var app = require("express")();
-var bodyParser = require("body-parser");
-var routes = require("./routes");
+import express from "express";
+const app = express();
+import bodyParser from "body-parser";
+import routes from "./routes/index.js";
 
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
@@ -13,4 +14,4 @@ app.use(bodyParser.json());
 
 app.use("/", routes);
 
-module.exports = app;
+export default app;

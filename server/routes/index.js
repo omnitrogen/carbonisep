@@ -1,16 +1,20 @@
-var model = require("./model.js");
-
-var express = require("express");
-
+import express from "express";
+import { getUsers } from "../model.js";
 const router = express.Router();
 
-router.get("/hello", function getVersion(request, response) {
-    console.log("yay");
-    const row = test();
-    return response.json({
-        message: String("Queried from database" + row.test_id + " " + row.name),
+router.get("/hello", (req, res) => {
+    return res.json({
+        message: "hello world!",
     });
 });
+
+router.get("/get_users", (req, res) => {
+    const users = getUsers();
+    return res.json({
+        message: users.map((elt) => elt["FirstName"]),
+    });
+});
+
 router.get("/login", function getVersion(request, response) {
     response = model.function;
 
@@ -23,4 +27,4 @@ router.get("/", (req, res) => {
     return res.json({ message: "hehe" });
 });
 
-module.exports = router;
+export default router;
