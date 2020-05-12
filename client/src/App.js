@@ -29,7 +29,7 @@ function App() {
                             <Chat />
                         </Route>
                         <Route path="/">
-                            <Home/>
+                            <Home />
                         </Route>
                     </Switch>
                 </Router>
