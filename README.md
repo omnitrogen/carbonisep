@@ -4,25 +4,24 @@ Triangle des Bermudes
 
 ## Installation
 
-Installer node et npm globalement
+Installer node et npm.
 
-Sur un terminal, dans le dossier server, faire:
+Sur un terminal:
 
 ```
 cd server
-npm install
+npm i
 npm start
 ```
 
-Ensuite, sur <http://localhost:8000/hello> le message de test devrait apparaitre.
+Sur <http://localhost:8000/hello> le message de test devrait apparaitre.
 
-Sur un autre terminal, faire:
+Dans un autre terminal, faire:
 
 ```
 cd client
-npm install react-bootstrap bootstrap ?
-npm install
+npm i
 npm start
 ```
 
-L'application s'ouvrir sur <http://localhost:3000>
+L'application devrait s'ouvrir sur <http://localhost:3000>.
