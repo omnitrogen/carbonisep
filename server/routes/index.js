@@ -16,24 +16,24 @@ router.get("/get_users", (req, res) => {
 });
 
 router.get("/login", function getVersion(request, response) {
-  response = model.function;
+    response = model.function;
 
-  return response.json({
-    element1: test,
-  });
+    return response.json({
+        element1: test,
+    });
 });
 
 router.get("/join", (req, res) => {
-  var code = req.query.code;
-  if (code == 12345) {
-    res.json({ exist: true });
-  }
+    var code = req.query.code;
+    if (code == 12345) {
+        res.json({ exist: true });
+    }
 
-  return res;
+    return res;
 });
 
 router.get("/", (req, res) => {
-  return res.json({ message: "hehe" });
+    return res.json({ message: "hehe" });
 });
 
 export default router;
