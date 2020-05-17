@@ -35,7 +35,6 @@ export default class Join extends Component {
         return <br />;
     }
     page() {
-        console.log(this.state.loading, this.state.gameExist);
         if (!this.state.gameExist) {
             return <Redirect to="/" />;
         }
