@@ -4,6 +4,7 @@ import { Nav, Navbar, NavItem, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 
 import { userActions } from "../../_actions";
+import { history } from "../../_helpers";
 
 import StaticFooter from "../templates/StaticFooter";
 import { Home } from "../Home";
@@ -23,7 +24,6 @@ function App2() {
 
     function handleLogout() {
         dispatch(userActions.logout());
-        window.location.reload(true);
     }
 
     return (
@@ -51,24 +51,24 @@ function App2() {
                                 <Nav.Link as={Link} to="/chat">
                                     chat
                                 </Nav.Link>
+                                {/* {!loggedIn && ( */}
                                 <Nav.Link as={Link} to="/login">
                                     login
                                 </Nav.Link>
+                                {/* )} */}
                                 {loggedIn && (
                                     <Nav.Link as={Link} to="/profile">
                                         profile
                                     </Nav.Link>
                                 )}
                                 {loggedIn && (
-                                    //{ <Nav.Link onSelect={handleLogout}>
-                                    //    log out
-                                    //</Nav.Link> }
-                                    <Button
-                                        variant="danger"
+                                    <Nav.Link
+                                        as={Link}
+                                        to="/"
                                         onClick={() => handleLogout()}
                                     >
                                         logout
-                                    </Button>
+                                    </Nav.Link>
                                 )}
                             </Nav>
                         </Navbar.Collapse>
