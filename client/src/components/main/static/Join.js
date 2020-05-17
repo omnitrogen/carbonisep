@@ -47,6 +47,7 @@ export default class Join extends Component {
             >
                 <div
                     style={{
+                        margin: 15,
                         border: "solid 1px black",
                         borderRadius: 25,
                         textAlign: "center",
@@ -114,21 +115,18 @@ export default class Join extends Component {
                     >
                         Quitter la partie
                     </Button>
-                    {this.startbutton()}
+                    <Button
+                        variant="success"
+                        href="home"
+                        size="lg"
+                        type="submit"
+                        style={{ display: owner ? "auto" : "none" }}
+                    >
+                        Lancer la partie
+                    </Button>
                 </div>
             </div>
         );
-    }
-
-    startbutton() {
-        if (owner) {
-            return (
-                <Button variant="success" href="home" size="lg" type="submit">
-                    {"Lancer la partie"}
-                </Button>
-            );
-        }
-        return "";
     }
 
     copier() {

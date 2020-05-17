@@ -9,6 +9,7 @@ import Connexion from "./components/main/static/Connexion";
 import StaticFooter from "./components/templates/StaticFooter";
 import Login from "./components/main/static/Login";
 import Chat from "./components/main/static/Chat";
+import Quizz from "./components/main/quizz";
 
 function App() {
     return (
@@ -27,6 +28,9 @@ function App() {
                         </Route>
                         <Route path="/chat">
                             <Chat />
+                        </Route>
+                        <Route path="/quizz">
+                            <Quizz />
                         </Route>
                         <Route path="/">
                             <Home />
