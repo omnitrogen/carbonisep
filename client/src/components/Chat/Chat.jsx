@@ -56,4 +56,4 @@ function Chat() {
     );
 }
 
-export default Chat;
+export { Chat };
