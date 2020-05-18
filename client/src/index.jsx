@@ -3,8 +3,7 @@ import { render } from "react-dom";
 import { Provider } from "react-redux";
 import { store } from "./_helpers";
 
-// import { App } from "./App";
-import { App2 } from "./components/App2";
+import { App } from "./components/App";
 import "./index.css";
 
 // setup fake backend
@@ -13,7 +12,7 @@ configureFakeBackend();
 
 render(
     <Provider store={store}>
-        <App2 />
+        <App />
     </Provider>,
     document.getElementById("root")
 );

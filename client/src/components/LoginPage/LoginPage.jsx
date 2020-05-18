@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Container } from "react-bootstrap";
 
-import { userActions } from "../_actions";
+import { userActions } from "../../_actions";
 
-import { history } from "../_helpers";
+import { history } from "../../_helpers";
 
 function LoginPage() {
     const [inputs, setInputs] = useState({

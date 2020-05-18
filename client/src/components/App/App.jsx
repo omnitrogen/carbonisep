@@ -17,18 +17,16 @@ import StaticFooter from "../templates/StaticFooter";
 import { Home } from "../Home";
 import { Join } from "../Join";
 import { Chat } from "../Chat";
-import { App } from "../../App";
 import { Tips } from "../Tips";
 import { About } from "../About";
 import { Profile } from "../Profile";
-import { LoginPage } from "../../LoginPage";
-import { RegisterPage } from "../../RegisterPage";
-import { LoginRedirect } from "../../_components";
+import { LoginPage } from "../LoginPage";
+import { RegisterPage } from "../RegisterPage";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
 
-function App2() {
+function App() {
     const loggedIn = useSelector((state) => state.authentication.loggedIn);
     const alert = useSelector((state) => state.alert);
     const dispatch = useDispatch();
@@ -118,4 +116,4 @@ function App2() {
     );
 }
 
-export { App2 };
+export { App };
