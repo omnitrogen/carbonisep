@@ -29,14 +29,14 @@ function App() {
                             {alert.message}
                         </div>
                     )}
-                    <Router history={history}>
-                        <Switch>
-                            <PrivateRoute exact path="/" component={HomePage} />
-                            <Route path="/login" component={LoginPage} />
-                            <Route path="/register" component={RegisterPage} />
-                            <Redirect from="*" to="/" />
-                        </Switch>
-                    </Router>
+                    {/* <Router history={history}> */}
+                    <Switch>
+                        {/* <PrivateRoute exact path="/" component={HomePage} /> */}
+                        <Route path="/user/login" component={LoginPage} />
+                        <Route path="/user/register" component={RegisterPage} />
+                        {/* <Redirect from="*" to="/" /> */}
+                    </Switch>
+                    {/* </Router> */}
                 </div>
             </div>
         </div>

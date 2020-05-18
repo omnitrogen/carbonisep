@@ -1,9 +1,16 @@
 import React, { useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { Nav, Navbar, NavItem, Button } from "react-bootstrap";
+import {
+    // BrowserRouter as Router,
+    Router,
+    Switch,
+    Route,
+    Link,
+    Redirect,
+} from "react-router-dom";
+import { Nav, Navbar, NavItem, Button, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 
-import { userActions } from "../../_actions";
+import { userActions, alertActions } from "../../_actions";
 import { history } from "../../_helpers";
 
 import StaticFooter from "../templates/StaticFooter";
@@ -14,13 +21,24 @@ import { App } from "../../App";
 import { Tips } from "../Tips";
 import { About } from "../About";
 import { Profile } from "../Profile";
+import { LoginPage } from "../../LoginPage";
+import { RegisterPage } from "../../RegisterPage";
+import { LoginRedirect } from "../../_components";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
 
 function App2() {
     const loggedIn = useSelector((state) => state.authentication.loggedIn);
+    const alert = useSelector((state) => state.alert);
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        history.listen((location, action) => {
+            // clear alert on location change
+            dispatch(alertActions.clear());
+        });
+    }, []);
 
     function handleLogout() {
         dispatch(userActions.logout());
@@ -29,7 +47,7 @@ function App2() {
     return (
         <div>
             <div style={{ minHeight: "90vh" }}>
-                <Router>
+                <Router history={history}>
                     <Navbar bg="light" expand="lg">
                         <Navbar.Brand as={Link} to="/">
                             Carbonisep
@@ -51,11 +69,11 @@ function App2() {
                                 <Nav.Link as={Link} to="/chat">
                                     chat
                                 </Nav.Link>
-                                {/* {!loggedIn && ( */}
-                                <Nav.Link as={Link} to="/login">
-                                    login
-                                </Nav.Link>
-                                {/* )} */}
+                                {!loggedIn && (
+                                    <Nav.Link as={Link} to="/login">
+                                        login
+                                    </Nav.Link>
+                                )}
                                 {loggedIn && (
                                     <Nav.Link as={Link} to="/profile">
                                         profile
@@ -73,12 +91,23 @@ function App2() {
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>
+                    <Container>
+                        {alert.message && (
+                            <div className={`alert ${alert.type}`}>
+                                {alert.message}
+                            </div>
+                        )}
+                    </Container>
                     <Switch>
                         <Route path="/tips" component={Tips} />
                         <Route path="/about" component={About} />
                         <Route path="/join" component={Join} />
                         <Route path="/chat" component={Chat} />
-                        <Route path="/login" component={App} />
+                        {/* <Route path="/user" component={App} /> */}
+                        <Route path="/login" component={LoginPage} />
+                        <Route path="/register" component={RegisterPage} />
+                        {/* <LoginRedirect exact path="/auth" component={Home} /> */}
+                        {/* <Redirect from="/auth/*" to="/auth" /> */}
                         <Route path="/profile" component={Profile} />
                         <Route path="/" component={Home} />
                     </Switch>

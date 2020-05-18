@@ -19,6 +19,7 @@ function login(username, password) {
             (user) => {
                 dispatch(success(user));
                 history.push("/");
+                dispatch(alertActions.success("Login successful"));
             },
             (error) => {
                 dispatch(failure(error.toString()));
