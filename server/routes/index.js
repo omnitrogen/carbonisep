@@ -8,15 +8,10 @@ import {
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import jwt_middleware from "express-jwt";
-const router = express.Router();
+import dotenv from "dotenv";
 
-if (typeof process.env.JWT_KEY_CARBONISEP === "undefined") {
-    console.log(
-        "Please add an environment variable $JWT_KEY_CARBONISEP with the JWT secret key!"
-    );
-} else {
-    const accessTokenSecret = process.env.JWT_KEY_CARBONISEP;
-}
+dotenv.config();
+const router = express.Router();
 
 router.get("/hello", (req, res) => {
     res.json({ message: "hello world!" });
@@ -34,16 +29,16 @@ router.post("/authenticate", async (req, res) => {
     }
     try {
         if (await bcrypt.compare(req.body.password, user.Password)) {
-            // const accessToken = jwt.sign(
-            //     { username: user.email },
-            //     accessTokenSecret
-            // );
+            const accessToken = jwt.sign(
+                { username: user.email },
+                process.env.JWT_KEY_CARBONISEP
+            );
             return res.status(200).json({
                 id: user.Id,
                 username: user.Username,
                 firstName: user.FirstName,
                 lastName: user.LastName,
-                token: "fake-jwt-token",
+                token: accessToken,
             });
         } else {
             res.status(400).json({ message: "Not allowed" });
@@ -73,6 +68,14 @@ router.post("/register", async (req, res) => {
         res.status(500).send();
     }
 });
+
+router.get(
+    "/plop",
+    jwt_middleware({ secret: process.env.JWT_KEY_CARBONISEP }),
+    (req, res) => {
+        return res.status(200).json({ plop: "plop I'm a protected route" });
+    }
+);
 
 router.get("/join", (req, res) => {
     var code = req.query.code;
