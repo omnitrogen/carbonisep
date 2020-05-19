@@ -3,7 +3,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import logo from "../../../assets/carbonisep.png";
 
-export default class Navbar1 extends React.Component {
+export default class StaticNavbar extends React.Component {
     render() {
         return (
             <div>
