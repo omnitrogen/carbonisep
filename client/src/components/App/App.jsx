@@ -101,11 +101,8 @@ function App() {
                         <Route path="/about" component={About} />
                         <Route path="/join" component={Join} />
                         <Route path="/chat" component={Chat} />
-                        {/* <Route path="/user" component={App} /> */}
                         <Route path="/login" component={LoginPage} />
                         <Route path="/register" component={RegisterPage} />
-                        {/* <LoginRedirect exact path="/auth" component={Home} /> */}
-                        {/* <Redirect from="/auth/*" to="/auth" /> */}
                         <Route path="/profile" component={Profile} />
                         <Route path="/" component={Home} />
                     </Switch>
