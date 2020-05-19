@@ -9,10 +9,15 @@ export default class StaticNavbar extends React.Component {
             <div>
                 <Navbar bg="light" variant="light">
                     <Navbar.Brand href="home">
-                        <img src={logo} className="" alt="logo" style={{ width: '8%' }}/>
+                        <img
+                            src={logo}
+                            className=""
+                            alt="logo"
+                            style={{ width: "8%" }}
+                        />
                     </Navbar.Brand>
                     <Nav className="mr-auto">
-                        <Nav.Link href="home">Acceuil</Nav.Link>
+                        <Nav.Link href="home">Accueil</Nav.Link>
                         <Nav.Link href="about" className="px-4">
                             A propos
                         </Nav.Link>
