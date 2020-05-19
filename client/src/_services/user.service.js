@@ -6,8 +6,6 @@ export const userService = {
     register,
 };
 
-const config = { apiUrl: "http://localhost:8000" };
-
 function login(username, password) {
     const requestOptions = {
         method: "POST",
@@ -15,7 +13,10 @@ function login(username, password) {
         body: JSON.stringify({ username, password }),
     };
 
-    return fetch(`${config.apiUrl}/authenticate`, requestOptions)
+    return fetch(
+        `${process.env.REACT_APP_API_URL}/authenticate`,
+        requestOptions
+    )
         .then(handleResponse)
         .then((user) => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -36,14 +37,14 @@ function register(user) {
         body: JSON.stringify(user),
     };
 
-    return fetch(`${config.apiUrl}/register`, requestOptions).then(
-        handleResponse
-    );
+    return fetch(
+        `${process.env.REACT_APP_API_URL}/register`,
+        requestOptions
+    ).then(handleResponse);
 }
 
 function handleResponse(response) {
     return response.text().then((text) => {
-        console.log("response : ", response);
         const data = text && JSON.parse(text);
         if (!response.ok) {
             if (response.status === 401) {
