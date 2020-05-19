@@ -1,5 +1,5 @@
 import express from "express";
-import { getUsers } from "../model.js";
+import { getUsers, getQuestions } from "../model.js";
 const router = express.Router();
 
 router.get("/hello", function getVersion(request, response) {
@@ -33,6 +33,11 @@ router.get("/join", (req, res) => {
         res.json({ exist: false });
     }
 
+    return res;
+});
+
+router.get("/quizz", (req, res) => {
+    res.json(getQuestions());
     return res;
 });
 
