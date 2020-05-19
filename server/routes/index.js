@@ -27,8 +27,34 @@ router.get("/get_users", (req, res) => {
     res.json({ message: users.map((elt) => elt["FirstName"]) });
 });
 
+router.post("/authenticate", async (req, res) => {
+    const user = loginUser({ username: req.body.username });
+    if (user == null) {
+        return res.status(400).json({ message: "Cannot find user" });
+    }
+    try {
+        if (await bcrypt.compare(req.body.password, user.Password)) {
+            // const accessToken = jwt.sign(
+            //     { username: user.email },
+            //     accessTokenSecret
+            // );
+            return res.status(200).json({
+                id: user.Id,
+                username: user.Username,
+                firstName: user.FirstName,
+                lastName: user.LastName,
+                token: "fake-jwt-token",
+            });
+        } else {
+            res.status(400).json({ message: "Not allowed" });
+        }
+    } catch {
+        res.status(400).json({ message: "Unexpected error" });
+    }
+});
+
 router.post("/register", async (req, res) => {
-    if (checkIfUserAlreadyExists(req.body.email)) {
+    if (checkIfUserAlreadyExists(req.body.username)) {
         return res
             .status(409)
             .json({ message: "A user with this email adress already exists!" });
@@ -38,36 +64,11 @@ router.post("/register", async (req, res) => {
         const user = {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
-            email: req.body.email,
+            username: req.body.username,
             password: hashedPassword,
         };
         registerUser(user);
         res.status(201).send();
-    } catch {
-        res.status(500).send();
-    }
-});
-
-router.post("/login", async (req, res) => {
-    const user = loginUser({ email: req.body.email });
-    if (user == null) {
-        return res.status(400).json({ message: "Cannot find user" });
-    }
-    try {
-        if (await bcrypt.compare(req.body.password, user.Password)) {
-            const accessToken = jwt.sign(
-                { username: user.email },
-                accessTokenSecret
-            );
-            res.status(200).json({
-                message: "Successfully connected",
-                firstName: user.FirstName,
-                lastName: user.LastName,
-                accessToken,
-            });
-        } else {
-            res.status(401).json({ message: "Not allowed" });
-        }
     } catch {
         res.status(500).send();
     }

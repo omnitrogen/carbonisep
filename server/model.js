@@ -6,16 +6,16 @@ export const getUsers = () => {
     return res;
 };
 
-export const checkIfUserAlreadyExists = (email) => {
+export const checkIfUserAlreadyExists = (username) => {
     const res = db
-        .prepare(`SELECT Mail FROM Users WHERE Mail == '${email}'`)
-        .all();
+        .prepare(`SELECT Username FROM Users WHERE Username == @username`)
+        .all({ username });
     return res && res.length ? true : false;
 };
 
 export const registerUser = (user) => {
     db.prepare(
-        `INSERT INTO Users (FirstName, LastName, Mail, Password) VALUES (@firstName, @lastName, @email, @password)`
+        `INSERT INTO Users (FirstName, LastName, Username, Password) VALUES (@firstName, @lastName, @username, @password)`
     ).run(user);
     return true;
 };
@@ -23,7 +23,7 @@ export const registerUser = (user) => {
 export const loginUser = (user) => {
     const res = db
         .prepare(
-            `SELECT FirstName, LastName, Mail, Password FROM Users WHERE Mail == @email`
+            `SELECT Id, FirstName, LastName, Username, Password FROM Users WHERE Username == @username`
         )
         .get(user);
     return res;
