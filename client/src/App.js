@@ -5,11 +5,11 @@ import "bootstrap/dist/css/bootstrap.css";
 import Home from "./components/main/static/Home";
 import Tips from "./components/main/static/Tips";
 import Join from "./components/main/static/Join";
-import Connexion from "./components/main/static/Connexion";
 import StaticFooter from "./components/templates/StaticFooter";
 import Login from "./components/main/static/Login";
 import Chat from "./components/main/static/Chat";
 import Quizz from "./components/main/quizz";
+import Game from "./components/main/game/Game";
 
 function App() {
     return (
@@ -31,6 +31,9 @@ function App() {
                         </Route>
                         <Route path="/quizz">
                             <Quizz />
+                        </Route>
+                        <Route path="/game">
+                            <Game />
                         </Route>
                         <Route path="/">
                             <Home />
