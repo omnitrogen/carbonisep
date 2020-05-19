@@ -34,7 +34,7 @@ export default class Quizz extends Component {
             lis.push(
                 <Form.Check
                     type="radio"
-                    label={this.state.questionsQuizz[num]["reponse" + (i + 1)]}
+                    label={this.state.questionsQuizz[num]["reponse" + i]}
                     name={"formHorizontalRadios" + num}
                     id={"formHorizontalRadios" + i}
                 />
@@ -66,7 +66,7 @@ export default class Quizz extends Component {
             .getElementById("Question" + this.state.current_question)
             .classList.remove("d-none");
 
-        if (this.state.current_question === 0) {
+        if (this.state.current_question == 0) {
             document
                 .getElementById("prev")
                 .parentElement.classList.add("disabled");
@@ -87,7 +87,10 @@ export default class Quizz extends Component {
             .classList.remove("d-none");
 
         // remplacer le 3 par le num de la last question
-        if (this.state.current_question === 3) {
+        if (
+            this.state.current_question ==
+            this.state.questionsQuizz.length - 1
+        ) {
             document
                 .getElementById("next")
                 .parentElement.classList.add("disabled");
