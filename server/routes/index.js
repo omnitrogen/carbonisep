@@ -27,6 +27,11 @@ router.get("/join", (req, res) => {
     return res;
 });
 
+router.get("/quizz", (req, res) => {
+    res.json(getQuestions());
+    return res;
+});
+
 router.get("/", (req, res) => {
     return res.json({ message: "hehe" });
 });

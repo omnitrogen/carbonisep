@@ -3,7 +3,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import logo from "../../../assets/carbonisep.png";
 
-export default class Navbar1 extends React.Component {
+export default class StaticNavbar extends React.Component {
     render() {
         return (
             <div>
@@ -17,7 +17,7 @@ export default class Navbar1 extends React.Component {
                         />
                     </Navbar.Brand>
                     <Nav className="mr-auto">
-                        <Nav.Link href="home">Acceuil</Nav.Link>
+                        <Nav.Link href="home">Accueil</Nav.Link>
                         <Nav.Link href="about" className="px-4">
                             A propos
                         </Nav.Link>
