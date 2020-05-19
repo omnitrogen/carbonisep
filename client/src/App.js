@@ -4,30 +4,40 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
 import Home from "./components/main/static/Home";
 import Tips from "./components/main/static/Tips";
+import Join from "./components/main/static/Join";
 import Connexion from "./components/main/static/Connexion";
 import StaticFooter from "./components/templates/StaticFooter";
-import ConnectedNavbars from "./components/templates/nav/ConnectedNavbars";
+import Login from "./components/main/static/Login";
+import Chat from "./components/main/static/Chat";
+import Quizz from "./components/main/quizz";
 
 function App() {
     return (
         <div>
-            <ConnectedNavbars />
-            <Router
-                className="position-absolute"
-                style={{ left: "15%", right: "15%", overflow: "hidden" }}
-            >
-                <Switch>
-                    <Route path="/tips">
-                        <Tips />
-                    </Route>
-                    <Route path="/connexion">
-                        <Connexion />
-                    </Route>
-                    <Route path="/">
-                        <Home />
-                    </Route>
-                </Switch>
-            </Router>
+            <div style={{ minHeight: "90vh" }}>
+                <Router>
+                    <Switch>
+                        <Route path="/tips">
+                            <Tips />
+                        </Route>
+                        <Route path="/connexion">
+                            <Login />
+                        </Route>
+                        <Route path="/join">
+                            <Join />
+                        </Route>
+                        <Route path="/chat">
+                            <Chat />
+                        </Route>
+                        <Route path="/quizz">
+                            <Quizz />
+                        </Route>
+                        <Route path="/">
+                            <Home />
+                        </Route>
+                    </Switch>
+                </Router>
+            </div>
             <StaticFooter />
         </div>
     );
