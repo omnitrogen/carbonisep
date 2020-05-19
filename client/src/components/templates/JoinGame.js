@@ -7,9 +7,12 @@ export default class JoinGame extends Component {
     async joinPartie(event) {
         event.preventDefault();
         var code = event.target.nomPartie.value;
-        console.log("tetst");
+        var id = 2;
+        console.log("test");
 
-        var gameExist = await fetch("http://localhost:8000/join?code=" + code)
+        var gameExist = await fetch(
+            "http://localhost:8000/join?code=" + code + "&id=" + id
+        )
             .then((res) => res.json())
             .then((res) => res.exist);
         console.log(gameExist);
