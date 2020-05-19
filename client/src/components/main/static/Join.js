@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import { Redirect } from "react-router-dom";
+import NotFound from "./NotFound";
 
 const noms = ["Jean", "Pierre", "Martin", "Paul", "François"];
 const listItems = noms.map((nom) => <li>{nom}</li>);
@@ -36,7 +37,7 @@ export default class Join extends Component {
     }
     page() {
         if (!this.state.gameExist) {
-            return <Redirect to="/" />;
+            return <NotFound />;
         }
         return (
             <div
