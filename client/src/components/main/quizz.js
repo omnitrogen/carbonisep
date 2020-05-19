@@ -25,7 +25,7 @@ export default class Quizz extends Component {
     }
 
     componentDidMount() {
-        var question1 = document.getElementById("Question0");
+        var question1 = document.getElementById("questionnaire0");
         question1.classList.remove("d-none");
     }
     question(num) {
@@ -43,7 +43,7 @@ export default class Quizz extends Component {
         return (
             <Form.Group
                 controlId="formBasicCheckbox"
-                id={"Question" + num}
+                id={"questionnaire" + num}
                 className="d-none"
             >
                 <Form.Label>{this.state.questionsQuizz[num].nom}</Form.Label>
@@ -60,10 +60,10 @@ export default class Quizz extends Component {
         this.state.current_question--;
 
         document
-            .getElementById("Question" + (this.state.current_question + 1))
+            .getElementById("questionnaire" + (this.state.current_question + 1))
             .classList.add("d-none");
         document
-            .getElementById("Question" + this.state.current_question)
+            .getElementById("questionnaire" + this.state.current_question)
             .classList.remove("d-none");
 
         if (this.state.current_question == 0) {
@@ -80,17 +80,13 @@ export default class Quizz extends Component {
         this.state.current_question++;
 
         document
-            .getElementById("Question" + (this.state.current_question - 1))
+            .getElementById("questionnaire" + (this.state.current_question - 1))
             .classList.add("d-none");
-        document
-            .getElementById("Question" + this.state.current_question)
-            .classList.remove("d-none");
 
-        // remplacer le 3 par le num de la last question
-        if (
-            this.state.current_question ==
-            this.state.questionsQuizz.length - 1
-        ) {
+        document
+            .getElementById("questionnaire" + this.state.current_question)
+            .classList.remove("d-none");
+        if (this.state.current_question == this.state.questionsQuizz.length) {
             document
                 .getElementById("next")
                 .parentElement.classList.add("disabled");
@@ -118,7 +114,15 @@ export default class Quizz extends Component {
                         </Pagination>
                         <Form>
                             {questions}
-                            <Button variant="primary" type="submit">
+                            <Button
+                                className="d-none"
+                                id={
+                                    "questionnaire" +
+                                    this.state.questionsQuizz.length
+                                }
+                                variant="primary"
+                                type="submit"
+                            >
                                 Submit
                             </Button>
                         </Form>
