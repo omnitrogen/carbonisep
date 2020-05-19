@@ -2,26 +2,10 @@ import express from "express";
 import { getUsers } from "../model.js";
 const router = express.Router();
 
-router.get("/hello", function getVersion(request, response) {
-    console.log("yay");
-    const row = test();
-    return response.json({
-        message: String("Queried from database" + row.test_id + " " + row.name),
-    });
-});
-
 router.get("/get_users", (req, res) => {
     const users = getUsers();
     return res.json({
-        message: users.map((elt) => elt["FirstName"]),
-    });
-});
-
-router.get("/login", function getVersion(request, response) {
-    response = model.function;
-
-    return response.json({
-        element1: test,
+        message: users.map((elt) => [elt["Mail"], elt["Password"]]),
     });
 });
 

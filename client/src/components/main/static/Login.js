@@ -15,12 +15,21 @@ export default class Login extends Component {
     }
     connexionFunction = (event) => {
         event.preventDefault();
-        fetch(API + "hello")
+        fetch(API + "get_users")
             .then((response) => {
                 return response.json();
             })
             .then((data) => {
-                console.log(data);
+                if (
+                    data.message.includes([
+                        this.state.email,
+                        this.state.password,
+                    ])
+                ) {
+                    console.log("OK");
+                } else {
+                    console.log("Not OK");
+                }
             });
     };
     render() {

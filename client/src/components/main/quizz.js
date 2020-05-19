@@ -91,13 +91,13 @@ export default class Quizz extends Component {
                                 />
                                 <Form.Check
                                     type="radio"
-                                    label="1 � 2 fois"
+                                    label="1 à 2 fois"
                                     name="formHorizontalRadios1"
                                     id="formHorizontalRadios2"
                                 />
                                 <Form.Check
                                     type="radio"
-                                    label="3 � 4 fois"
+                                    label="3 à 4 fois"
                                     name="formHorizontalRadios1"
                                     id="formHorizontalRadios3"
                                 />
@@ -114,7 +114,7 @@ export default class Quizz extends Component {
                                 className="d-none"
                             >
                                 <Form.Label>
-                                    Quels d�chets triez-vous ?
+                                    Quels déchets triez-vous ?
                                 </Form.Label>
                                 <Form.Check
                                     type="radio"
@@ -124,7 +124,7 @@ export default class Quizz extends Component {
                                 />
                                 <Form.Check
                                     type="radio"
-                                    label="Mat�riel �lectronique"
+                                    label="Matériel électronique"
                                     name="formHorizontalRadios2"
                                     id="formHorizontalRadios2"
                                 />
@@ -157,13 +157,13 @@ export default class Quizz extends Component {
                                 />
                                 <Form.Check
                                     type="radio"
-                                    label="1 � 2 fois"
+                                    label="1 à 2 fois"
                                     name="formHorizontalRadios3"
                                     id="formHorizontalRadios2"
                                 />
                                 <Form.Check
                                     type="radio"
-                                    label="3 � 4 fois"
+                                    label="3 à 4 fois"
                                     name="formHorizontalRadios3"
                                     id="formHorizontalRadios3"
                                 />
