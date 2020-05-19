@@ -1,0 +1,20 @@
+GET http://localhost:8000/hello
+
+###
+
+POST http://localhost:8000/register
+Content-Type: application/json
+
+{"firstName": "toto", "lastName": "tata", "email": "atata@gmail.com", "password": "hehe"}
+
+# {"firstName": "jacky", "lastName": "DE croui channelle", "email": "jadoregoogle@gmail.com", "password": "motdepasse"}
+
+###
+
+POST http://localhost:8000/login
+Content-Type: application/json
+
+{"email": "jadoregoogle@gmail.com", "password": "motdepasse"}
+
+# {"email": "tata@gmail.com", "password": "hehe"}
+
