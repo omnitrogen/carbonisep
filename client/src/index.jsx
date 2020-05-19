@@ -7,8 +7,8 @@ import { App } from "./components/App";
 import "./index.css";
 
 // setup fake backend
-// import { configureFakeBackend } from "./_helpers";
-// configureFakeBackend();
+import { configureFakeBackend } from "./_helpers";
+configureFakeBackend();
 
 render(
     <Provider store={store}>

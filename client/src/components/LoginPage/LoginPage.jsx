@@ -34,6 +34,7 @@ function LoginPage() {
         if (username && password) {
             dispatch(userActions.login(username, password));
         }
+        history.push("/");
     }
 
     return (

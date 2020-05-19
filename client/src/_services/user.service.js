@@ -6,6 +6,8 @@ export const userService = {
     register,
 };
 
+const config = { apiUrl: "http://localhost:3000" };
+
 function login(username, password) {
     const requestOptions = {
         method: "POST",
@@ -13,14 +15,12 @@ function login(username, password) {
         body: JSON.stringify({ username, password }),
     };
 
-    return fetch(
-        `${process.env.REACT_APP_API_URL}/authenticate`,
-        requestOptions
-    )
+    return fetch(`${config.apiUrl}/users/authenticate`, requestOptions)
         .then(handleResponse)
         .then((user) => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             localStorage.setItem("user", JSON.stringify(user));
+
             return user;
         });
 }
@@ -37,10 +37,9 @@ function register(user) {
         body: JSON.stringify(user),
     };
 
-    return fetch(
-        `${process.env.REACT_APP_API_URL}/register`,
-        requestOptions
-    ).then(handleResponse);
+    return fetch(`${config.apiUrl}/users/register`, requestOptions).then(
+        handleResponse
+    );
 }
 
 function handleResponse(response) {
@@ -52,10 +51,11 @@ function handleResponse(response) {
                 logout();
                 window.location.reload(true);
             }
+
             const error = (data && data.message) || response.statusText;
             return Promise.reject(error);
         }
-        console.log(data);
+
         return data;
     });
 }

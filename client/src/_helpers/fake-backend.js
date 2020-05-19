@@ -18,6 +18,10 @@ export function configureFakeBackend() {
                         return authenticate();
                     case url.endsWith("/users/register") && method === "POST":
                         return register();
+                    case url.endsWith("/users") && method === "GET":
+                        return getUsers();
+                    case url.match(/\/users\/\d+$/) && method === "DELETE":
+                        return deleteUser();
                     default:
                         // pass through any requests not handled above
                         return realFetch(url, opts)
@@ -57,6 +61,20 @@ export function configureFakeBackend() {
                 users.push(user);
                 localStorage.setItem("users", JSON.stringify(users));
 
+                return ok();
+            }
+
+            function getUsers() {
+                if (!isLoggedIn()) return unauthorized();
+
+                return ok(users);
+            }
+
+            function deleteUser() {
+                if (!isLoggedIn()) return unauthorized();
+
+                users = users.filter((x) => x.id !== idFromUrl());
+                localStorage.setItem("users", JSON.stringify(users));
                 return ok();
             }
 
