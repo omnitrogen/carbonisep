@@ -20,7 +20,6 @@ export default class Quizz extends Component {
                 this.setState({
                     questionsQuizz: data,
                 });
-                console.log(this.state.questionsQuizz[0].Nom);
             });
     }
 
@@ -30,11 +29,15 @@ export default class Quizz extends Component {
     }
     question(num) {
         var lis = [];
+        var resultats = (
+            this.state.questionsQuizz[num]["resultats"] || ""
+        ).split(",");
         for (let i = 0; i < 4; i++) {
             lis.push(
                 <Form.Check
                     type="radio"
                     label={this.state.questionsQuizz[num]["reponse" + i]}
+                    value={resultats[i]}
                     name={"formHorizontalRadios" + num}
                     id={"formHorizontalRadios" + i}
                 />

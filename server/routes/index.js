@@ -28,7 +28,7 @@ router.get("/join", (req, res) => {
 });
 
 router.get("/quizz", (req, res) => {
-    res.json(getQuestions());
+    res.json(model.getQuestions());
     return res;
 });
 
