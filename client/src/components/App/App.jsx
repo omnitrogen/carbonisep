@@ -21,6 +21,8 @@ import { About } from "../About";
 import { Profile } from "../Profile";
 import { LoginPage } from "../LoginPage";
 import { RegisterPage } from "../RegisterPage";
+import { Quizz } from "../main/quizz";
+import { Game } from "../main/game/Game";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
@@ -100,6 +102,8 @@ function App() {
                         <Route path="/about" component={About} />
                         <Route path="/join" component={Join} />
                         <Route path="/chat" component={Chat} />
+                        <Route path="/quizz" component={Quizz} />
+                        <Route path="/game" component={Game} />
                         <Route path="/login" component={LoginPage} />
                         <Route path="/register" component={RegisterPage} />
                         <Route path="/profile" component={Profile} />
