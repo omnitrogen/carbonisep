@@ -5,8 +5,6 @@ import { Container } from "react-bootstrap";
 
 import { userActions } from "../../redux/_actions";
 
-import { history } from "../../redux/_helpers";
-
 function Login() {
     const [inputs, setInputs] = useState({
         username: "",

@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import { Button, Form, Pagination } from "react-bootstrap";
+import React from "react";
 import { Card } from "../Card";
 import argent from "assets/money.png";
 import score from "assets/score.png";

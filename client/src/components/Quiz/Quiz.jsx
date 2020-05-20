@@ -11,7 +11,6 @@ class Quiz extends Component {
         };
     }
     componentWillMount() {
-        var questionsQuizz;
         fetch("http://localhost:8000/quizz")
             .then((res) => res.json())
             .then((data) => {

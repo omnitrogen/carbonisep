@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { Router, Switch, Route, Link, Redirect } from "react-router-dom";
-import { Nav, Navbar, NavItem, Button, Container } from "react-bootstrap";
+import { Router, Switch, Route, Link } from "react-router-dom";
+import { Nav, Navbar, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 
 import { userActions, alertActions } from "redux/_actions";

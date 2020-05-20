@@ -1,5 +1,4 @@
 import React from "react";
-import { Button, Form, Pagination } from "react-bootstrap";
 import card_background1 from "assets/cards/background1.png";
 import argent from "assets/money.png";
 
