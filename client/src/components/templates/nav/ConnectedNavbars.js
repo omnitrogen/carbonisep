@@ -7,7 +7,7 @@ export default class ConnectedNavbars extends React.Component {
     render() {
         return (
             <div>
-                <ProfileNavbar />
+                {/* <ProfileNavbar /> */}
                 <div className="">
                     <SideNavbar />
                     <div

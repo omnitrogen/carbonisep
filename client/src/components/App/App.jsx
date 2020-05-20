@@ -1,16 +1,10 @@
 import React, { useEffect } from "react";
-import {
-    Router,
-    Switch,
-    Route,
-    Link,
-    Redirect,
-} from "react-router-dom";
+import { Router, Switch, Route, Link, Redirect } from "react-router-dom";
 import { Nav, Navbar, NavItem, Button, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 
-import { userActions, alertActions } from "../../_actions";
-import { history } from "../../_helpers";
+import { userActions, alertActions } from "redux/_actions";
+import { history } from "redux/_helpers";
 
 import StaticFooter from "../templates/StaticFooter";
 import { Home } from "../Home";
@@ -19,10 +13,13 @@ import { Chat } from "../Chat";
 import { Tips } from "../Tips";
 import { About } from "../About";
 import { Profile } from "../Profile";
-import { LoginPage } from "../LoginPage";
-import { RegisterPage } from "../RegisterPage";
-import { Quizz } from "../main/quizz";
-import { Game } from "../main/game/Game";
+import { Login } from "../Login";
+import { Register } from "../Register";
+import { Quiz } from "../Quiz";
+import { Game } from "../Game";
+import { NotFound } from "../NotFound";
+
+import logo from "assets/carbonisep.png";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
@@ -49,7 +46,12 @@ function App() {
                 <Router history={history}>
                     <Navbar bg="light" expand="lg">
                         <Navbar.Brand as={Link} to="/">
-                            Carbonisep
+                            <img
+                                src={logo}
+                                height="50"
+                                className="d-inline-block align-top"
+                                alt="Carbonisep"
+                            />
                         </Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
@@ -98,16 +100,17 @@ function App() {
                         )}
                     </Container>
                     <Switch>
-                        <Route path="/tips" component={Tips} />
-                        <Route path="/about" component={About} />
-                        <Route path="/join" component={Join} />
-                        <Route path="/chat" component={Chat} />
-                        <Route path="/quizz" component={Quizz} />
-                        <Route path="/game" component={Game} />
-                        <Route path="/login" component={LoginPage} />
-                        <Route path="/register" component={RegisterPage} />
-                        <Route path="/profile" component={Profile} />
-                        <Route path="/" component={Home} />
+                        <Route exact path="/" component={Home} />
+                        <Route exact path="/login" component={Login} />
+                        <Route exact path="/register" component={Register} />
+                        <Route exact path="/profile" component={Profile} />
+                        <Route exact path="/about" component={About} />
+                        <Route exact path="/tips" component={Tips} />
+                        <Route exact path="/join" component={Join} />
+                        <Route exact path="/chat" component={Chat} />
+                        <Route exact path="/quiz" component={Quiz} />
+                        <Route exact path="/game" component={Game} />
+                        <Route component={NotFound} />
                     </Switch>
                 </Router>
             </div>
