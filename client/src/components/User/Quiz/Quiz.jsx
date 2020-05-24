@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button, Form, Pagination } from "react-bootstrap";
-import ConnectedNavbars from "../templates/nav/ConnectedNavbars";
+import ConnectedNavbars from "../../Templates/nav/ConnectedNavbars";
 
 class Quiz extends Component {
     constructor(props) {

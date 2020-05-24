@@ -1,9 +1,12 @@
 import React from "react";
-import JoinOrCreateGame from "../templates/JoinOrCreateGame";
+import JoinOrCreateGame from "../../Templates/JoinOrCreateGame";
+
+import { Navigation } from "components/App/Navigation";
 
 function About() {
     return (
         <div>
+            <Navigation />
             <div className="p-3 d-flex justify-content-center pt-5">
                 <div className="border border-dark rounded w-80 p-4">
                     <h1>Pourquoi CarbonISEP ?</h1>
