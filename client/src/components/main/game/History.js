@@ -1,11 +1,21 @@
 
 import React, { Component } from "react";
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Pagination from 'react-bootstrap/Pagination';
 import HistoryCard from "./HistoryCard";
 
 export default class History extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            card_1: {
+                background: 1,
+                text: "Planter des fleurs"
+            },
+            card_2: {
+                background: 2,
+                text: "Supprimer ses mails"
+            }
+        };
+    }
 
     render() {
         return (
@@ -14,8 +24,8 @@ export default class History extends Component {
                     <div className="w-80 p-2">
                         <h1>Historique</h1>
                         <div className="d-flex">
-                            <HistoryCard />
-                            <HistoryCard />
+                            <HistoryCard card={this.state.card_1} />
+                            <HistoryCard card={this.state.card_2} />
                         </div>
                     </div>
                 </div>

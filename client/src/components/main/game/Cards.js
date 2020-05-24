@@ -12,8 +12,8 @@ export default class Cards extends Component {
     render() {
         return (
             <div>
-                <div className="border border-dark rounded w-80 p-4">
-                    <div className="d-flex justify-content-between">
+                <div className="w-80 p-4">
+                    <div className="d-flex justify-content-between pb-5">
                         <h1>Actions</h1>
                         <div className="d-flex justify-content-end mr-4">
                             <p>Argent:</p>
@@ -24,7 +24,7 @@ export default class Cards extends Component {
                             <img className="ml-2" src={score} alt="Score actuel" style={{ width: '4%', height: '80%' }} />
                         </div>
                     </div>
-                    <div className="d-flex justify-content-around">
+                    <div className="d-flex justify-content-around pt-5">
                         <Card />
                         <Card />
                         <Card />
