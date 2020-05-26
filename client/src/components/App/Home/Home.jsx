@@ -37,7 +37,7 @@ function Home() {
                     </p>
                     <Button
                         variant="primary"
-                        href="connexion"
+                        href="login"
                         type="submit"
                         className="mt-3"
                     >
