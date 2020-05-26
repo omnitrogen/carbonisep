@@ -1,6 +1,5 @@
-
 import React, { Component } from "react";
-import Avatar from "components/templates/Avatar";
+import Avatar from "../../Templates/Avatar";
 
 class Participants extends Component {
     render() {
@@ -53,7 +52,7 @@ class Participants extends Component {
                 </div>
             </div>
         );
-    };
+    }
 }
 
 export { Participants };
