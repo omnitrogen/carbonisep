@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import { HistoryCard } from "../HistoryCard";
 
+//Not up to date yet, data structure has changed
 class History extends Component {
     constructor(props) {
         super(props);
