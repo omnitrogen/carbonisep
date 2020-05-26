@@ -1,10 +1,14 @@
 
 import React, { Component } from "react";
-import { Card } from "../Card";
-import argent from "assets/money.png";
-import score from "assets/score.png";
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Pagination from 'react-bootstrap/Pagination';
+import Card from "./Card";
+import argent from '../../../assets/money.png';
+import score from '../../../assets/score.png';
 
-class Cards extends Component {
+export default class Cards extends Component {
+
     render() {
         return (
             <div>
@@ -28,7 +32,5 @@ class Cards extends Component {
                 </div>
             </div>
         );
-    } 
+    }
 }
-
-export { Cards };

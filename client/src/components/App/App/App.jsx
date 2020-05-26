@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { alertActions } from "redux/_actions";
 import { history } from "redux/_helpers";
 
-import StaticFooter from "../../Templates/StaticFooter";
+import StaticFooter from "components/templates/StaticFooter";
 import { Home } from "../Home";
 import { Join } from "../../User/Join";
 import { Chat } from "../../User/Chat";

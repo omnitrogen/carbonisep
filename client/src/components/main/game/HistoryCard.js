@@ -5,7 +5,7 @@ import background2 from '../../../assets/cards/background2.png'
 import background3 from '../../../assets/cards/background3.png'
 import background4 from '../../../assets/cards/background4.png'
 
-class HistoryCard extends Component {
+export default class HistoryCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -31,5 +31,3 @@ class HistoryCard extends Component {
         );
     }
 }
-
-export { HistoryCard };

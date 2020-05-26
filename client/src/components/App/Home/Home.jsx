@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import JoinOrCreateGame from "../../Templates/JoinOrCreateGame";
+import JoinOrCreateGame from "components/templates/JoinOrCreateGame";
 
 import { Navigation } from "components/App/Navigation";
 

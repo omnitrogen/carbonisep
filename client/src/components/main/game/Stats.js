@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import Chart from "react-google-charts";
 
-class Stats extends Component {
+export default class Stats extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -45,7 +45,7 @@ class Stats extends Component {
             this.state.scores[i][0] = player[0];
             this.state.scores[i][1] = player[1];
             i++;
-        }
+        } 
     };
 
     updateScore = (newTurnScore) => {
@@ -94,5 +94,3 @@ class Stats extends Component {
         );
     }
 }
-
-export { Stats };

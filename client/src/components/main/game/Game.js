@@ -1,17 +1,17 @@
 
 import React, { Component } from "react";
-import { Navbar } from "react-bootstrap";
-import { Participants } from "../Participants";
-import { Stats } from "../Stats";
-import { Cards } from "../Cards";
-import { History } from "../History";
-import logo from "assets/carbonisep.png";
+import Navbar from 'react-bootstrap/Navbar';
+import Participants from "./Participants";
+import Stats from "./Stats";
+import Cards from "./Cards";
+import History from "./History";
+import logo from "../../../assets/carbonisep.png";
 
-class Game extends Component {
+export default class Game extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            
         };
     }
 
@@ -28,7 +28,7 @@ class Game extends Component {
                                 alt="logo"
                             />
                         </Navbar.Brand>
-                        <Stats />
+                        <Stats/>
                     </div>
                     <div className="mw-25 mt-5">
                         <Cards />
@@ -42,5 +42,3 @@ class Game extends Component {
         );
     }
 }
-
-export { Game };

@@ -1,5 +1,5 @@
 import React from "react";
-import JoinOrCreateGame from "../../Templates/JoinOrCreateGame";
+import JoinOrCreateGame from "components/templates/JoinOrCreateGame";
 
 import { Navigation } from "components/App/Navigation";
 
