@@ -8,7 +8,6 @@ export default class JoinGame extends Component {
         event.preventDefault();
         var code = event.target.nomPartie.value;
         var id = 2;
-        console.log("test");
 
         var gameExist = await fetch(
             "http://localhost:8000/join?code=" + code + "&id=" + id
@@ -21,6 +20,7 @@ export default class JoinGame extends Component {
             console.log("redirect " + url);
             window.location = url;
         }
+        document.getElementsByName("nomPartie")[0].classList.add("is-invalid");
     }
 
     render() {
@@ -35,6 +35,9 @@ export default class JoinGame extends Component {
                         name="nomPartie"
                         placeholder="Code de la partie"
                     />
+                    <Form.Control.Feedback type="invalid">
+                        Code de partie invalide
+                    </Form.Control.Feedback>
                 </Form.Group>
                 <Button variant="success" type="submit">
                     Rejoindre la partie

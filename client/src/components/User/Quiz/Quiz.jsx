@@ -21,7 +21,7 @@ class Quiz extends Component {
     }
 
     componentDidMount() {
-        var question1 = document.getElementById("questionnaire0");
+        var question1 = document.getElementById("q0");
         question1.classList.remove("d-none");
     }
     question(num) {
@@ -32,6 +32,7 @@ class Quiz extends Component {
         for (let i = 0; i < 4; i++) {
             lis.push(
                 <Form.Check
+                    required
                     type="radio"
                     label={this.state.questionsQuizz[num]["reponse" + i]}
                     value={resultats[i]}
@@ -43,7 +44,7 @@ class Quiz extends Component {
         return (
             <Form.Group
                 controlId="formBasicCheckbox"
-                id={"questionnaire" + num}
+                id={"q" + num}
                 className="d-none"
             >
                 <Form.Label>{this.state.questionsQuizz[num].nom}</Form.Label>
@@ -60,10 +61,10 @@ class Quiz extends Component {
         this.state.current_question--;
 
         document
-            .getElementById("questionnaire" + (this.state.current_question + 1))
+            .getElementById("q" + (this.state.current_question + 1))
             .classList.add("d-none");
         document
-            .getElementById("questionnaire" + this.state.current_question)
+            .getElementById("q" + this.state.current_question)
             .classList.remove("d-none");
 
         if (this.state.current_question == 0) {
@@ -80,11 +81,11 @@ class Quiz extends Component {
         this.state.current_question++;
 
         document
-            .getElementById("questionnaire" + (this.state.current_question - 1))
+            .getElementById("q" + (this.state.current_question - 1))
             .classList.add("d-none");
 
         document
-            .getElementById("questionnaire" + this.state.current_question)
+            .getElementById("q" + this.state.current_question)
             .classList.remove("d-none");
         if (this.state.current_question == this.state.questionsQuizz.length) {
             document
@@ -112,14 +113,11 @@ class Quiz extends Component {
                             />
                             <Pagination.Next onClick={this.next} id="next" />
                         </Pagination>
-                        <Form>
+                        <Form action="quizResults">
                             {questions}
                             <Button
                                 className="d-none"
-                                id={
-                                    "questionnaire" +
-                                    this.state.questionsQuizz.length
-                                }
+                                id={"q" + this.state.questionsQuizz.length}
                                 variant="primary"
                                 type="submit"
                             >

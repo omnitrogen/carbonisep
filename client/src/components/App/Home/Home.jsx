@@ -3,8 +3,10 @@ import { Button } from "react-bootstrap";
 import JoinOrCreateGame from "../../Templates/JoinOrCreateGame";
 
 import { Navigation } from "components/App/Navigation";
+import { useSelector } from "react-redux";
 
 function Home() {
+    const loggedIn = useSelector((state) => state.authentication.loggedIn);
     return (
         <div>
             <Navigation />
@@ -37,11 +39,13 @@ function Home() {
                     </p>
                     <Button
                         variant="primary"
-                        href="login"
+                        href={loggedIn ? "quiz" : "login"}
                         type="submit"
                         className="mt-3"
                     >
-                        Connecte-toi pour accéder au questionnaire!
+                        {loggedIn
+                            ? "Accéder au quiz"
+                            : "Connecte-toi pour accéder au questionnaire!"}
                     </Button>
                 </div>
             </div>
