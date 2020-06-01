@@ -4,17 +4,14 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import jwt_middleware from "express-jwt";
 import dotenv from "dotenv";
+import { v4 as uuidv4 } from "uuid";
 
 dotenv.config();
+
 const router = express.Router();
 
 router.get("/hello", (req, res) => {
     res.json({ message: "hello world!" });
-});
-
-router.get("/get_users", (req, res) => {
-    const users = model.getUsers();
-    res.json({ message: users.map((elt) => elt["FirstName"]) });
 });
 
 router.post("/authenticate", async (req, res) => {
@@ -44,7 +41,7 @@ router.post("/authenticate", async (req, res) => {
 });
 
 router.post("/register", async (req, res) => {
-    if (model.checkIfUserAlreadyExists(req.body.username)) {
+    if (model.userAlreadyExists(req.body.username)) {
         return res
             .status(409)
             .json({ message: "A user with this email adress already exists!" });
@@ -72,29 +69,60 @@ router.get(
     }
 );
 
-router.get("/join", (req, res) => {
-    var code = parseInt(req.query.code);
-    var id = parseInt(req.query.id);
-    var map = model.join(code, id);
-
-    console.log(code, id, map);
-
-    if (map.has(code)) {
-        res.json({ exist: true, owner: map.get(code) == id });
-    } else {
-        res.json({ exist: false, owner: false });
-    }
-
-    return res;
-});
-
 router.get("/quizz", (req, res) => {
     res.json(model.getQuestions());
     return res;
 });
 
-router.get("/", (req, res) => {
-    return res.json({ message: "hehe" });
+router.post("/join_game", async (req, res) => {
+    const userId = req.body.user.id;
+    const uuid = req.body.code;
+    const game = model.gameExists({ uuid });
+    if (game == false) {
+        return res
+            .status(400)
+            .json({ message: "Game with such id do not exist!" });
+    }
+    try {
+        const gameName = model.joinGame({ userId, uuid }).Name;
+        return res.status(200).json({ gameName });
+    } catch {
+        res.status(400).json({ message: "Unexpected error" });
+    }
+});
+
+router.post("/create_game", async (req, res) => {
+    const userId = req.body.user.id;
+    const name = req.body.name;
+    const uuid = uuidv4();
+    try {
+        model.createGame({ userId, uuid, name });
+        return res.status(200).json({ uuid });
+    } catch {
+        res.status(400).json({ message: "Unexpected error" });
+    }
+});
+
+router.post("/quit_game", async (req, res) => {
+    const user = req.body.user;
+    try {
+        model.quitGame({ user });
+        return res.status(200);
+    } catch {
+        res.status(400).json({ message: "Unexpected error" });
+    }
+});
+
+router.post("/get_users", async (req, res) => {
+    const uuid = req.body.code;
+    try {
+        const users = model.getUsers({ uuid });
+        return res
+            .status(200)
+            .json({ users: users.map((user) => user.Username) });
+    } catch {
+        res.status(400).json({ message: "Unexpected error" });
+    }
 });
 
 export default router;

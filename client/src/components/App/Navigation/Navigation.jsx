@@ -19,7 +19,7 @@ function Navigation() {
     return (
         <div>
             <Navbar bg="light" expand="lg">
-                <Navbar.Brand as={Link} to="/">
+                <Navbar.Brand as={Link} to="/" style={{ outline: 0 }}>
                     <img
                         src={logo}
                         height="50"
@@ -30,27 +30,39 @@ function Navigation() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav variant="pills" className="ml-auto">
-                        <Nav.Link as={Link} to="/tips">
+                        <Nav.Link as={Link} to="/tips" style={{ outline: 0 }}>
                             tips
                         </Nav.Link>
-                        <Nav.Link as={Link} to="/about">
+                        <Nav.Link as={Link} to="/about" style={{ outline: 0 }}>
                             about
                         </Nav.Link>
                         {loggedIn && (
-                            <Nav.Link as={Link} to="/join">
+                            <Nav.Link
+                                as={Link}
+                                to="/join"
+                                style={{ outline: 0 }}
+                            >
                                 join
                             </Nav.Link>
                         )}
-                        <Nav.Link as={Link} to="/chat">
+                        <Nav.Link as={Link} to="/chat" style={{ outline: 0 }}>
                             chat
                         </Nav.Link>
                         {!loggedIn && (
-                            <Nav.Link as={Link} to="/login">
+                            <Nav.Link
+                                as={Link}
+                                to="/login"
+                                style={{ outline: 0 }}
+                            >
                                 login
                             </Nav.Link>
                         )}
                         {loggedIn && (
-                            <Nav.Link as={Link} to="/profile">
+                            <Nav.Link
+                                as={Link}
+                                to="/profile"
+                                style={{ outline: 0 }}
+                            >
                                 profile
                             </Nav.Link>
                         )}
@@ -59,6 +71,7 @@ function Navigation() {
                                 as={Link}
                                 to="/"
                                 onClick={() => handleLogout()}
+                                style={{ outline: 0 }}
                             >
                                 logout
                             </Nav.Link>
@@ -67,9 +80,13 @@ function Navigation() {
                 </Navbar.Collapse>
             </Navbar>
             <Container>
-                {alert.message && (
-                    <div className={`alert ${alert.type}`}>{alert.message}</div>
-                )}
+                <div className="mt-4">
+                    {alert.message && (
+                        <div className={`alert ${alert.type}`}>
+                            {alert.message}
+                        </div>
+                    )}
+                </div>
             </Container>
         </div>
     );

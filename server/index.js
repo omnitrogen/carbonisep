@@ -17,19 +17,14 @@ async function startServer() {
     }
 }
 
-io.sockets.on("connection", function (socket, pseudo) {
-    socket.on("nouveau_client", function (pseudo) {
-        pseudo = ent.encode(pseudo);
-        socket.pseudo = pseudo;
-        socket.broadcast.emit("nouveau_client", pseudo);
+io.on("connection", (socket) => {
+    socket.on("event://send-message", (msg) => {
+        const payload = JSON.parse(msg);
+        socket.broadcast.emit("event://get-message", msg);
     });
-
-    socket.on("message", function (message) {
-        message = ent.encode(message);
-        socket.broadcast.emit("message", {
-            pseudo: socket.pseudo,
-            message: message,
-        });
+    socket.on("event://update-users", (msg) => {
+        const payload = JSON.parse(msg);
+        socket.broadcast.emit("event://get-updated-users", msg);
     });
 });
 

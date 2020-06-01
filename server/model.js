@@ -2,32 +2,30 @@ import Database from "better-sqlite3";
 const db = new Database("carbonisep.db");
 
 export const model = {
-    getUsers,
-    checkIfUserAlreadyExists,
+    userAlreadyExists,
     registerUser,
     loginUser,
-    join,
-    getQuestions
-}
-
-function getUsers() {
-    const res = db.prepare("SELECT * FROM User").all();
-    return res;
+    getQuestions,
+    gameExists,
+    joinGame,
+    createGame,
+    quitGame,
+    getUsers,
 };
 
-function checkIfUserAlreadyExists(username) {
+function userAlreadyExists(username) {
     const res = db
         .prepare(`SELECT Username FROM Users WHERE Username == @username`)
         .all({ username });
     return res && res.length ? true : false;
-};
+}
 
 function registerUser(user) {
     db.prepare(
         `INSERT INTO Users (FirstName, LastName, Username, Password) VALUES (@firstName, @lastName, @username, @password)`
     ).run(user);
     return true;
-};
+}
 
 function loginUser(user) {
     const res = db
@@ -36,18 +34,44 @@ function loginUser(user) {
         )
         .get(user);
     return res;
-};
-
-function join(code) {
-    const res = db.prepare("SELECT * FROM Game").all();
-    var dict = new Map();
-    for (var elt of res) {
-        dict.set(parseInt(elt["Id"]), parseInt(elt["OwnerId"]));
-    }
-    return dict;
 }
 
 function getQuestions() {
     const res = db.prepare(`SELECT * FROM QuestionsQuizz`).all();
+    return res;
+}
+
+function gameExists(uuid) {
+    const res = db
+        .prepare(`SELECT Uuid FROM Games WHERE Uuid == @uuid`)
+        .all(uuid);
+    return res && res.length ? true : false;
+}
+
+function joinGame(game) {
+    db.prepare(`UPDATE Users SET GameId=@uuid WHERE Id=@userId;`).run(game);
+    const res = db
+        .prepare(`SELECT Name FROM Games WHERE Uuid == @uuid`)
+        .get(game);
+    return res;
+}
+
+function createGame(game) {
+    db.prepare(`INSERT INTO Games VALUES (@uuid, @userId, @name)`).run(game);
+    db.prepare(`UPDATE Users SET GameId=@uuid WHERE Id=@userId;`).run(game);
+    return true;
+}
+
+function quitGame(user) {
+    db.prepare(`UPDATE Users SET GameId=null WHERE Id=@user.id;`).run({
+        user,
+    });
+    return true;
+}
+
+function getUsers(uuid) {
+    const res = db
+        .prepare("SELECT Username FROM Users WHERE GameId=@uuid")
+        .all(uuid);
     return res;
 }
