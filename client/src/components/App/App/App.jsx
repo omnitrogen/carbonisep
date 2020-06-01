@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Router, Switch, Route, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { alertActions } from "redux/_actions";
+import { alertActions, gameActions } from "redux/_actions";
 import { history } from "redux/_helpers";
 
 import StaticFooter from "components/Templates/StaticFooter";

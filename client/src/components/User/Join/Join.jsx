@@ -80,7 +80,7 @@ function Join() {
                                 {joiningGame && (
                                     <span className="spinner-border spinner-border-sm mr-1"></span>
                                 )}
-                                Joining the game
+                                Join the game
                             </button>
                         </div>
                     </form>
@@ -111,7 +111,7 @@ function Join() {
                                 {creatingGame && (
                                     <span className="spinner-border spinner-border-sm mr-1"></span>
                                 )}
-                                Creating a game
+                                Create a game
                             </button>
                         </div>
                     </form>

@@ -63,12 +63,6 @@ export function game(
                 updatingUsers: true,
             });
         case gameConstants.UPDATE_USERS_SUCCESS:
-            // if (state.uuid !== null && action.payload.uuid === state.uuid) {
-            //     return Object.assign({}, state, {
-            //         updatingUsers: false,
-            //         users: [...state.users, action.payload.user.username],
-            //     });
-            // } else return Object.assign({}, state, {});
             return Object.assign({}, state, {
                 updatingUsers: false,
                 users: action.users,
@@ -86,9 +80,12 @@ export function game(
 
         // Clean chat log case
         case chatConstants.CLEAN_CHAT_LOG:
-            return Object.assign({}, state, {
-                chatLog: [],
-            });
+            console.log("state.uuid :>> ", state.uuid);
+            console.log("action :>> ", action);
+            if (state.uuid !== null && action.uuid === state.uuid)
+                return Object.assign({}, state, {
+                    chatLog: [],
+                });
 
         default:
             return state;

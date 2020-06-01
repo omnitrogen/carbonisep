@@ -12,8 +12,9 @@ function updateChatLog(update) {
     };
 }
 
-function cleanChat() {
+function cleanChat(uuid) {
     return {
         type: chatConstants.CLEAN_CHAT_LOG,
+        uuid,
     };
 }
