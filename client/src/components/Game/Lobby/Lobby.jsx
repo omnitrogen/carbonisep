@@ -1,8 +1,10 @@
-import React, { useState, useEffect, useContext, useRef } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
     Container,
+    Col,
+    Row,
     ListGroup,
     Button,
     Tooltip,
@@ -35,7 +37,6 @@ function Lobby() {
     const uuid = useSelector((state) => state.game.uuid);
 
     const [isCopied, setIsCopied] = useState(false);
-    const uuidCopy = useRef();
 
     const alert = useSelector((state) => state.alert);
     const dispatch = useDispatch();
@@ -60,38 +61,64 @@ function Lobby() {
     return (
         <div>
             <Navigation />
-            <Container className="justify-content-center p-5">
-                <h1>hello {user.username}</h1>
-                <h2>welcome to {lobbyName}!</h2>
-                <OverlayTrigger
-                    placement="right"
-                    delay={{ show: 150, hide: 400 }}
-                    overlay={renderTooltip}
-                >
-                    <CopyToClipboard
-                        text={uuid}
-                        // onCopy={() => this.setState({ copied: true })}
-                    >
-                        <Button
-                            variant="outline-secondary"
-                            disabled={isCopied}
-                            onClick={!isCopied ? handleClickCopy : null}
-                        >
-                            {isCopied ? "Copied!" : "Game id: " + uuid}
-                        </Button>
-                    </CopyToClipboard>
-                </OverlayTrigger>
+            <Container>
+                <Row className="border border-dark rounded my-5">
+                    <Row className="m-4">
+                        <Col md="auto">
+                            <h1>hello {user.username}</h1>
+                            <h2>welcome to {lobbyName} room!</h2>
+                            <OverlayTrigger
+                                placement="right"
+                                delay={{ show: 150, hide: 400 }}
+                                overlay={renderTooltip}
+                            >
+                                <CopyToClipboard text={uuid}>
+                                    <Button
+                                        variant="outline-primary"
+                                        disabled={isCopied}
+                                        onClick={
+                                            !isCopied ? handleClickCopy : null
+                                        }
+                                    >
+                                        {isCopied
+                                            ? "Copied!"
+                                            : "Game id: " + uuid}
+                                    </Button>
+                                </CopyToClipboard>
+                            </OverlayTrigger>
+                        </Col>
+                    </Row>
 
-                <div>admin : {admin ? "admin" : "not admin"}</div>
+                    <Row className="justify-content-md-center m-4">
+                        <Col>
+                            <h2>users in the current room</h2>
+                            <ListGroup variant="flush">
+                                {users.map((u, i) => (
+                                    <ListGroup.Item
+                                        className="rounded"
+                                        variant="info"
+                                        key={i}
+                                    >
+                                        {u}
+                                    </ListGroup.Item>
+                                ))}
+                            </ListGroup>
+                        </Col>
+                        <Col>
+                            <Chat />
+                        </Col>
+                    </Row>
 
-                <ListGroup variant="flush">
-                    {users.map((u, i) => (
-                        <ListGroup.Item key={i}>{u}</ListGroup.Item>
-                    ))}
-                </ListGroup>
-
-                <Chat />
-                {admin && <Button variant="success">Start the game</Button>}
+                    <Row className="justify-content-md-center m-4">
+                        <Col>
+                            {admin && (
+                                <Button variant="success">
+                                    Start the game
+                                </Button>
+                            )}
+                        </Col>
+                    </Row>
+                </Row>
             </Container>
         </div>
     );

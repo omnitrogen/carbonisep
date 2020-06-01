@@ -1,6 +1,12 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Container, Button, InputGroup, FormControl } from "react-bootstrap";
+import {
+    Container,
+    Button,
+    InputGroup,
+    FormControl,
+    Badge,
+} from "react-bootstrap";
 
 import { WebSocketContext } from "redux/_helpers/websockets";
 
@@ -11,6 +17,8 @@ function Chat() {
     const uuid = useSelector((state) => state.game.uuid);
     const chats = useSelector((state) => state.game.chatLog);
 
+    const history = useRef();
+
     const dispatch = useDispatch();
     const ws = useContext(WebSocketContext);
 
@@ -20,6 +28,11 @@ function Chat() {
             message: "joined the chat!",
         });
     }, []);
+
+    useEffect(() => {
+        history.current.scrollTop =
+            history.current.scrollHeight - history.current.clientHeight;
+    }, [chats]);
 
     const sendMessage = () => {
         if (msgInput) {
@@ -38,49 +51,52 @@ function Chat() {
     };
 
     return (
-        <div>
-            <Container className="justify-content-center p-5">
-                <div className="room">
-                    <div
-                        className="history"
-                        style={{
-                            width: "800px",
-                            border: "1px solid #ccc",
-                            height: "300px",
-                            textAlign: "left",
-                            padding: "10px",
-                            overflow: "scroll",
-                        }}
-                    >
-                        {chats.map((c, i) => (
-                            <div key={i}>
-                                <i>{c.username}:</i> {c.message}
-                            </div>
-                        ))}
-                    </div>
-
-                    <InputGroup className="mb-3">
-                        <FormControl
-                            placeholder="Message"
-                            aria-label="Message"
-                            aria-describedby="basic-addon2"
-                            type="text"
-                            value={msgInput}
-                            onChange={(e) => setMsgInput(e.target.value)}
-                            onKeyPress={handleKeyPress}
-                        />
-                        <InputGroup.Append>
-                            <Button
-                                variant="outline-primary"
-                                onClick={sendMessage}
-                            >
-                                Send
-                            </Button>
-                        </InputGroup.Append>
-                    </InputGroup>
+        <Container className="justify-content-center p-5">
+            <div
+                className="room"
+                style={{
+                    overflow: "hidden",
+                }}
+            >
+                <div
+                    className="history rounded p-3"
+                    ref={history}
+                    style={{
+                        width: "500px",
+                        border: "1px solid #ccc",
+                        height: "300px",
+                        textAlign: "left",
+                        overflow: "auto",
+                    }}
+                >
+                    {chats.map((c, i) => (
+                        <div key={i}>
+                            <Badge pill variant="dark">
+                                {c.username}
+                            </Badge>{" "}
+                            {c.message}
+                        </div>
+                    ))}
                 </div>
-            </Container>
-        </div>
+
+                <InputGroup className="mb-3">
+                    <FormControl
+                        placeholder="Message"
+                        aria-label="Message"
+                        aria-describedby="basic-addon2"
+                        type="text"
+                        value={msgInput}
+                        onChange={(e) => setMsgInput(e.target.value)}
+                        onKeyPress={handleKeyPress}
+                    />
+                    <InputGroup.Append>
+                        <Button variant="outline-primary" onClick={sendMessage}>
+                            Send
+                        </Button>
+                    </InputGroup.Append>
+                </InputGroup>
+            </div>
+        </Container>
     );
 }
 
