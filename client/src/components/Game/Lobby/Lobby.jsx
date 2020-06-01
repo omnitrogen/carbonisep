@@ -62,7 +62,6 @@ function Lobby() {
         <div>
             <Navigation />
             <Container className="border border-dark rounded my-5">
-                {/* <Row className="justify-content-md-center border border-dark rounded my-5"> */}
                 <Row className="m-4">
                     <Col md="auto">
                         <h1>hello {user.username}</h1>
@@ -112,7 +111,6 @@ function Lobby() {
                         )}
                     </Col>
                 </Row>
-                {/* </Row> */}
             </Container>
         </div>
     );
