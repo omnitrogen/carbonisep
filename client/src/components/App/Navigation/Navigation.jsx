@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Nav, Navbar, Container } from "react-bootstrap";
+import { Nav, Navbar, Container, Collapse } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 
 import { userActions } from "redux/_actions";
@@ -45,9 +45,6 @@ function Navigation() {
                                 join
                             </Nav.Link>
                         )}
-                        <Nav.Link as={Link} to="/chat" style={{ outline: 0 }}>
-                            chat
-                        </Nav.Link>
                         {!loggedIn && (
                             <Nav.Link
                                 as={Link}
@@ -80,13 +77,13 @@ function Navigation() {
                 </Navbar.Collapse>
             </Navbar>
             <Container>
-                <div className="mt-4">
-                    {alert.message && (
+                <Collapse in={alert.message}>
+                    <div className="mt-4">
                         <div className={`alert ${alert.type}`}>
                             {alert.message}
                         </div>
-                    )}
-                </div>
+                    </div>
+                </Collapse>
             </Container>
         </div>
     );

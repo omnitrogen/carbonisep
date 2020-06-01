@@ -61,64 +61,58 @@ function Lobby() {
     return (
         <div>
             <Navigation />
-            <Container>
-                <Row className="border border-dark rounded my-5">
-                    <Row className="m-4">
-                        <Col md="auto">
-                            <h1>hello {user.username}</h1>
-                            <h2>welcome to {lobbyName} room!</h2>
-                            <OverlayTrigger
-                                placement="right"
-                                delay={{ show: 150, hide: 400 }}
-                                overlay={renderTooltip}
-                            >
-                                <CopyToClipboard text={uuid}>
-                                    <Button
-                                        variant="outline-primary"
-                                        disabled={isCopied}
-                                        onClick={
-                                            !isCopied ? handleClickCopy : null
-                                        }
-                                    >
-                                        {isCopied
-                                            ? "Copied!"
-                                            : "Game id: " + uuid}
-                                    </Button>
-                                </CopyToClipboard>
-                            </OverlayTrigger>
-                        </Col>
-                    </Row>
-
-                    <Row className="justify-content-md-center m-4">
-                        <Col>
-                            <h2>users in the current room</h2>
-                            <ListGroup variant="flush">
-                                {users.map((u, i) => (
-                                    <ListGroup.Item
-                                        className="rounded"
-                                        variant="info"
-                                        key={i}
-                                    >
-                                        {u}
-                                    </ListGroup.Item>
-                                ))}
-                            </ListGroup>
-                        </Col>
-                        <Col>
-                            <Chat />
-                        </Col>
-                    </Row>
-
-                    <Row className="justify-content-md-center m-4">
-                        <Col>
-                            {admin && (
-                                <Button variant="success">
-                                    Start the game
+            <Container className="border border-dark rounded my-5">
+                {/* <Row className="justify-content-md-center border border-dark rounded my-5"> */}
+                <Row className="m-4">
+                    <Col md="auto">
+                        <h1>hello {user.username}</h1>
+                        <h2>welcome to {lobbyName} room!</h2>
+                        <OverlayTrigger
+                            placement="right"
+                            delay={{ show: 150, hide: 400 }}
+                            overlay={renderTooltip}
+                        >
+                            <CopyToClipboard text={uuid}>
+                                <Button
+                                    variant="outline-primary"
+                                    disabled={isCopied}
+                                    onClick={!isCopied ? handleClickCopy : null}
+                                >
+                                    {isCopied ? "Copied!" : "Game id: " + uuid}
                                 </Button>
-                            )}
-                        </Col>
-                    </Row>
+                            </CopyToClipboard>
+                        </OverlayTrigger>
+                    </Col>
                 </Row>
+
+                <Row className="justify-content-md-center m-4">
+                    <Col>
+                        <h2>users in the current room</h2>
+                        <ListGroup variant="flush">
+                            {users.map((u, i) => (
+                                <ListGroup.Item
+                                    className="rounded"
+                                    variant="info"
+                                    key={i}
+                                >
+                                    {u}
+                                </ListGroup.Item>
+                            ))}
+                        </ListGroup>
+                    </Col>
+                    <Col>
+                        <Chat />
+                    </Col>
+                </Row>
+
+                <Row className="m-4">
+                    <Col style={{ "text-align": "center" }}>
+                        {admin && (
+                            <Button variant="success">Start the game</Button>
+                        )}
+                    </Col>
+                </Row>
+                {/* </Row> */}
             </Container>
         </div>
     );
