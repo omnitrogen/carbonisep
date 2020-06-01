@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import socketIOClient from "socket.io-client";
+import { Navigation } from "components/App/Navigation";
 import $ from "jquery";
 const ENDPOINT = "http://localhost:8000";
 
@@ -37,21 +38,24 @@ function Chat() {
     }, []);
     return (
         <>
-            <h1>Le super Chat temps réel !</h1>
+            <div>
+                <Navigation />
+                <h1>Le super Chat temps réel !</h1>
 
-            <form action="/" method="post" id="formulaire_chat">
-                <input
-                    type="text"
-                    name="message"
-                    id="message"
-                    placeholder="Votre message..."
-                    size="50"
-                    autofocus
-                />
-                <input type="submit" id="envoi_message" value="Envoyer" />
-            </form>
+                <form action="/" method="post" id="formulaire_chat">
+                    <input
+                        type="text"
+                        name="message"
+                        id="message"
+                        placeholder="Votre message..."
+                        size="50"
+                        autofocus
+                    />
+                    <input type="submit" id="envoi_message" value="Envoyer" />
+                </form>
 
-            <section id="zone_chat"></section>
+                <section id="zone_chat"></section>
+            </div>
         </>
     );
 }

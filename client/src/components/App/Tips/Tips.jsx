@@ -18,7 +18,7 @@ function Tips() {
                         faciles à faire, tu peux répondre à un questionnaire en
                         te connectant et on t'aidera
                     </p>
-                    <Nav.Link href="connexion">
+                    <Nav.Link href="login">
                         <Button variant="primary">
                             Connecte-toi pour répondre au questionnaire!
                         </Button>
