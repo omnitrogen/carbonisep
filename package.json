@@ -1,0 +1,27 @@
+{
+  "name": "carbonisep",
+  "version": "1.0.0",
+  "description": "Triangle des Bermudes",
+  "main": "index.js",
+  "scripts": {
+    "client": "cd client && npm start ",
+    "server": "cd server && npm start ",
+    "clientInstall": "cd client && npm i ",
+    "serverInstall": "cd server && npm i ",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "install": "concurrently \"npm run serverInstall\" \"npm run clientInstall\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omnitrogen/carbonisep.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/omnitrogen/carbonisep/issues"
+  },
+  "homepage": "https://github.com/omnitrogen/carbonisep#readme",
+  "devDependencies": {
+    "concurrently": "^5.2.0"
+  }
+}
