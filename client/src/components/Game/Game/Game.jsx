@@ -37,18 +37,18 @@ class Game extends Component {
             <div>
                 {this.state.continueGame && (
                     <div className="d-flex">
-                        <div style={{ maxWidth: "50%" }}>
+                        <div style={{ maxWidth: '25%' }}>
                             <Navbar.Brand href="home" className="mb-5">
                                 <img
                                     src={logo}
                                     className=""
-                                    style={{ width: "50%" }}
+                                    style={{ width: '50%' }}
                                     alt="logo"
                                 />
                             </Navbar.Brand>
                             <Stats ref={this.stats} />
                         </div>
-                        <div className="mw-25 mt-5">
+                        <div className="mw-50 mt-5">
                             <Cards
                                 score={this.state.score}
                                 money={this.state.money}
@@ -57,7 +57,7 @@ class Game extends Component {
                         </div>
                         <div
                             className="ml-4 d-flex flex-column justify-content-between"
-                            style={{ maxWidth: "25%" }}
+                            style={{ maxWidth: '25%' }}
                         >
                             <History ref={this.history} />
                             <Participants />
