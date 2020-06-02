@@ -31,6 +31,7 @@ router.post("/authenticate", async (req, res) => {
                 firstName: user.FirstName,
                 lastName: user.LastName,
                 token: accessToken,
+                letter: user.QuizResult,
             });
         } else {
             res.status(400).json({ message: "Not allowed" });
@@ -68,11 +69,6 @@ router.get(
         return res.status(200).json({ plop: "plop I'm a protected route" });
     }
 );
-
-router.get("/quizz", (req, res) => {
-    res.json(model.getQuestions());
-    return res;
-});
 
 router.post("/join_game", async (req, res) => {
     const userId = req.body.user.id;
@@ -120,6 +116,38 @@ router.post("/get_users", async (req, res) => {
         return res
             .status(200)
             .json({ users: users.map((user) => user.Username) });
+    } catch {
+        res.status(400).json({ message: "Unexpected error" });
+    }
+});
+
+router.post("/get_quiz", async (req, res) => {
+    try {
+        const quiz = model.getQuiz();
+        return res.status(200).json({ quiz });
+    } catch {
+        res.status(400).json({ message: "Unexpected error" });
+    }
+});
+
+router.post("/send_quiz", async (req, res) => {
+    const userId = req.body.user.id;
+    const letter = req.body.letter;
+    try {
+        model.sendQuiz({ userId, letter });
+        return res.status(200).json({ letter });
+    } catch {
+        res.status(400).json({ message: "Unexpected error" });
+    }
+});
+
+router.post("/get_actions", async (req, res) => {
+    const letter = req.body.letter;
+    try {
+        const actions = model.getActions(letter);
+        return res
+            .status(200)
+            .json({ actions: actions.map((action) => action.Name) });
     } catch {
         res.status(400).json({ message: "Unexpected error" });
     }

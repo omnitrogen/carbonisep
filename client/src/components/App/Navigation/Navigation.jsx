@@ -9,6 +9,9 @@ import logo from "assets/carbonisep.png";
 
 function Navigation() {
     const loggedIn = useSelector((state) => state.authentication.loggedIn);
+    const hasAnsweredToQuiz = useSelector(
+        (state) => state.quiz.hasAnsweredToQuiz
+    );
     const alert = useSelector((state) => state.alert);
     const dispatch = useDispatch();
 
@@ -45,6 +48,15 @@ function Navigation() {
                                 join
                             </Nav.Link>
                         )}
+                        {loggedIn && !hasAnsweredToQuiz && (
+                            <Nav.Link
+                                as={Link}
+                                to="/quiz"
+                                style={{ outline: 0 }}
+                            >
+                                quiz
+                            </Nav.Link>
+                        )}
                         {!loggedIn && (
                             <Nav.Link
                                 as={Link}
@@ -77,7 +89,7 @@ function Navigation() {
                 </Navbar.Collapse>
             </Navbar>
             <Container>
-                <Collapse in={alert.message}>
+                <Collapse in={typeof alert.message !== "undefined"}>
                     <div className="mt-4">
                         <div className={`alert ${alert.type}`}>
                             {alert.message}

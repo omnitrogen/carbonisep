@@ -5,12 +5,14 @@ export const model = {
     userAlreadyExists,
     registerUser,
     loginUser,
-    getQuestions,
     gameExists,
     joinGame,
     createGame,
     quitGame,
     getUsers,
+    getQuiz,
+    sendQuiz,
+    getActions,
 };
 
 function userAlreadyExists(username) {
@@ -30,14 +32,9 @@ function registerUser(user) {
 function loginUser(user) {
     const res = db
         .prepare(
-            `SELECT Id, FirstName, LastName, Username, Password FROM Users WHERE Username == @username`
+            `SELECT Id, FirstName, LastName, Username, Password, QuizResult FROM Users WHERE Username == @username`
         )
         .get(user);
-    return res;
-}
-
-function getQuestions() {
-    const res = db.prepare(`SELECT * FROM QuestionsQuizz`).all();
     return res;
 }
 
@@ -74,4 +71,40 @@ function getUsers(uuid) {
         .prepare("SELECT Username FROM Users WHERE GameId=@uuid")
         .all(uuid);
     return res;
+}
+
+function getQuiz() {
+    const res = db.prepare(`SELECT * FROM Quiz`).all();
+    return res;
+}
+
+function sendQuiz(quiz) {
+    db.prepare(`UPDATE Users SET QuizResult=@letter WHERE Id=@userId;`).run(
+        quiz
+    );
+    return true;
+}
+
+function getActions(letter) {
+    if (letter === "A" || letter == null) {
+        const res = db
+            .prepare(`SELECT Name FROM Actions WHERE isA == 1;`)
+            .all();
+        return res;
+    } else if (letter === "B") {
+        const res = db
+            .prepare(`SELECT Name FROM Actions WHERE isB == 1;`)
+            .all();
+        return res;
+    } else if (letter === "C") {
+        const res = db
+            .prepare(`SELECT Name FROM Actions WHERE isC == 1;`)
+            .all();
+        return res;
+    } else if (letter === "D") {
+        const res = db
+            .prepare(`SELECT Name FROM Actions WHERE isD == 1;`)
+            .all();
+        return res;
+    }
 }

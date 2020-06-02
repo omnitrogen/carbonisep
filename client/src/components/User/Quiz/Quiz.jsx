@@ -1,136 +1,158 @@
-import React, { Component } from "react";
-import { Button, Form, Pagination } from "react-bootstrap";
-import ConnectedNavbars from "../../Templates/nav/ConnectedNavbars";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+    Container,
+    Button,
+    InputGroup,
+    Form,
+    FormControl,
+    Pagination,
+    Row,
+    Col,
+} from "react-bootstrap";
 
-class Quiz extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            current_question: 0,
-            questionsQuizz: [""],
-        };
-    }
-    componentWillMount() {
-        fetch("http://localhost:8000/quizz")
-            .then((res) => res.json())
-            .then((data) => {
-                this.setState({
-                    questionsQuizz: data,
-                });
-            });
+import { Navigation } from "components/App/Navigation";
+
+import { userActions, alertActions } from "redux/_actions";
+
+function Quiz() {
+    const [question, setQuestion] = useState(1);
+    const [inputs, setInputs] = useState({
+        question_1: null,
+        question_2: null,
+        question_3: null,
+        question_4: null,
+    });
+    const [min, setMin] = useState(true);
+    const [max, setMax] = useState(false);
+
+    const quiz = useSelector((state) => state.quiz.quiz);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(userActions.getQuiz());
+    }, []);
+
+    function decrQuestion() {
+        if (question > 1) {
+            setQuestion(question - 1);
+            setMin(false);
+            setMax(false);
+        }
+        if (question === 1) setMin(true);
     }
 
-    componentDidMount() {
-        var question1 = document.getElementById("questionnaire0");
-        question1.classList.remove("d-none");
+    function incrQuestion() {
+        if (question < quiz.length) {
+            setQuestion(question + 1);
+            setMin(false);
+            setMax(false);
+        }
+        if (question === quiz.length - 1) setMax(true);
     }
-    question(num) {
-        var lis = [];
-        var resultats = (
-            this.state.questionsQuizz[num]["resultats"] || ""
-        ).split(",");
-        for (let i = 0; i < 4; i++) {
-            lis.push(
-                <Form.Check
-                    type="radio"
-                    label={this.state.questionsQuizz[num]["reponse" + i]}
-                    value={resultats[i]}
-                    name={"formHorizontalRadios" + num}
-                    id={"formHorizontalRadios" + i}
-                />
+
+    const listResponse = (i) => [
+        i.reponse0,
+        i.reponse1,
+        i.reponse2,
+        i.reponse3,
+    ];
+
+    function maxCount(input) {
+        const { max, ...counts } = (input || "").split("").reduce(
+            (a, c) => {
+                a[c] = a[c] ? a[c] + 1 : 1;
+                a.max = a.max < a[c] ? a[c] : a.max;
+                return a;
+            },
+            { max: 0 }
+        );
+
+        return Object.entries(counts).filter(([k, v]) => v === max);
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        if (Object.values(inputs).some((x) => x !== null && x !== "")) {
+            const letter = maxCount(Object.values(inputs).join(""))[0][0];
+            dispatch(userActions.sendQuiz(letter));
+        } else
+            dispatch(
+                alertActions.error("Complete all the form before submitting!")
             );
-        }
-        return (
-            <Form.Group
-                controlId="formBasicCheckbox"
-                id={"questionnaire" + num}
-                className="d-none"
-            >
-                <Form.Label>{this.state.questionsQuizz[num].nom}</Form.Label>
-
-                {lis}
-            </Form.Group>
-        );
     }
 
-    prev = () => {
-        document
-            .getElementById("next")
-            .parentElement.classList.remove("disabled");
-        this.state.current_question--;
+    function handleChange(e) {
+        const { name, value } = e.target;
+        setInputs((inputs) => ({ ...inputs, [name]: value }));
+    }
 
-        document
-            .getElementById("questionnaire" + (this.state.current_question + 1))
-            .classList.add("d-none");
-        document
-            .getElementById("questionnaire" + this.state.current_question)
-            .classList.remove("d-none");
+    return (
+        <div>
+            <Navigation />
+            <Container>
+                <Row className="justify-content-md-center">
+                    <Col
+                        className="justify-content-md-center border border-dark rounded p-3 px-4 m-4"
+                        lg="6"
+                    >
+                        <h1>Quiz</h1>
+                        <Form onSubmit={handleSubmit}>
+                            {quiz.map((quest, i) => (
+                                <div
+                                    key={quest.Id}
+                                    style={{
+                                        display:
+                                            question === i + 1 ? "" : "none",
+                                    }}
+                                >
+                                    <h3>{quest.nom}</h3>
+                                    <Form.Group
+                                        controlId={"question_" + quest.Id}
+                                    >
+                                        {listResponse(quest).map(
+                                            (option, j) => (
+                                                <Form.Check
+                                                    key={j}
+                                                    type="radio"
+                                                    label={option}
+                                                    name={
+                                                        "question_" + quest.Id
+                                                    }
+                                                    value={
+                                                        quest.resultats.split(
+                                                            ","
+                                                        )[j]
+                                                    }
+                                                    onChange={handleChange}
+                                                />
+                                            )
+                                        )}
+                                    </Form.Group>
+                                </div>
+                            ))}
 
-        if (this.state.current_question == 0) {
-            document
-                .getElementById("prev")
-                .parentElement.classList.add("disabled");
-        }
-    };
-
-    next = () => {
-        document
-            .getElementById("prev")
-            .parentElement.classList.remove("disabled");
-        this.state.current_question++;
-
-        document
-            .getElementById("questionnaire" + (this.state.current_question - 1))
-            .classList.add("d-none");
-
-        document
-            .getElementById("questionnaire" + this.state.current_question)
-            .classList.remove("d-none");
-        if (this.state.current_question == this.state.questionsQuizz.length) {
-            document
-                .getElementById("next")
-                .parentElement.classList.add("disabled");
-        }
-    };
-
-    render() {
-        var questions = [];
-        for (let i = 0; i < this.state.questionsQuizz.length; i++) {
-            questions.push(this.question(i));
-        }
-        return (
-            <div>
-                <ConnectedNavbars />
-                <div className="p-3 d-flex justify-content-center pt-5">
-                    <div className="border border-dark rounded w-80 p-4">
-                        <h1>Questionnaire</h1>
-                        <Pagination>
-                            <Pagination.Prev
-                                onClick={this.prev}
-                                id="prev"
-                                className="disabled"
-                            />
-                            <Pagination.Next onClick={this.next} id="next" />
-                        </Pagination>
-                        <Form>
-                            {questions}
-                            <Button
-                                className="d-none"
-                                id={
-                                    "questionnaire" +
-                                    this.state.questionsQuizz.length
-                                }
-                                variant="primary"
-                                type="submit"
-                            >
-                                Submit
-                            </Button>
+                            <Pagination className="d-flex justify-content-center">
+                                <Pagination.Prev
+                                    disabled={min}
+                                    onClick={decrQuestion}
+                                />
+                                <Pagination.Next
+                                    disabled={max}
+                                    onClick={incrQuestion}
+                                />
+                            </Pagination>
+                            {max && (
+                                <div className="d-flex justify-content-center m-2">
+                                    <Button type="submit">Submit</Button>
+                                </div>
+                            )}
                         </Form>
-                    </div>
-                </div>
-            </div>
-        );
-    }
+                    </Col>
+                </Row>
+            </Container>
+        </div>
+    );
 }
 
 export { Quiz };

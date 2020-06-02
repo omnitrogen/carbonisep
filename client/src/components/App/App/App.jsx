@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { alertActions, gameActions } from "redux/_actions";
 import { history } from "redux/_helpers";
 
-import StaticFooter from "components/Templates/StaticFooter";
+import { Footer } from "components/App/Footer";
 import { Home } from "components/App/Home";
 import { Join } from "components/User/Join";
 import { Tips } from "components/App/Tips";
@@ -22,7 +22,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
 
 function App() {
-    const alert = useSelector((state) => state.alert);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -51,7 +50,7 @@ function App() {
                     </Switch>
                 </Router>
             </div>
-            <StaticFooter />
+            <Footer />
         </div>
     );
 }

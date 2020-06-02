@@ -19,7 +19,6 @@ function Join() {
     const joiningGame = useSelector((state) => state.game.joiningGame);
     const creatingGame = useSelector((state) => state.game.creatingGame);
 
-    const alert = useSelector((state) => state.alert);
     const dispatch = useDispatch();
 
     function handleChange(e) {
@@ -48,76 +47,6 @@ function Join() {
     return (
         <div>
             <Navigation />
-            {/* <Container className="d-flex justify-content-center p-5">
-                <div className="border border-dark rounded p-4">
-                    <form
-                        name="form"
-                        onSubmit={joinHandleSubmit}
-                        className="center"
-                    >
-                        <div className="form-group">
-                            <input
-                                type="text"
-                                name="code"
-                                placeholder="Game code"
-                                value={code}
-                                onChange={handleChange}
-                                className={
-                                    "form-control" +
-                                    (submittedJoin && !code
-                                        ? " is-invalid"
-                                        : "")
-                                }
-                            />
-                            {submittedJoin && !code && (
-                                <div className="invalid-feedback">
-                                    Code is required
-                                </div>
-                            )}
-                        </div>
-                        <div className="form-group text-center">
-                            <button className="btn btn-success">
-                                {joiningGame && (
-                                    <span className="spinner-border spinner-border-sm mr-1"></span>
-                                )}
-                                Join the game
-                            </button>
-                        </div>
-                    </form>
-                    <hr />
-                    <form name="form" onSubmit={createGameHandleSubmit}>
-                        <div className="form-group">
-                            <input
-                                type="text"
-                                name="name"
-                                placeholder="Game name"
-                                value={name}
-                                onChange={handleChange}
-                                className={
-                                    "form-control" +
-                                    (submittedCreate && !name
-                                        ? " is-invalid"
-                                        : "")
-                                }
-                            />
-                            {submittedCreate && !name && (
-                                <div className="invalid-feedback">
-                                    Name is required
-                                </div>
-                            )}
-                        </div>
-                        <div className="form-group text-center">
-                            <button className="btn btn-primary">
-                                {creatingGame && (
-                                    <span className="spinner-border spinner-border-sm mr-1"></span>
-                                )}
-                                Create a game
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </Container> */}
-
             <Container className="border border-dark rounded my-5 p-4">
                 <Row className="justify-content-md-center py-3">
                     <Col lg="8">

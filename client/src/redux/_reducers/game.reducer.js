@@ -5,6 +5,7 @@ export function game(
     state = {
         chatLog: [],
         joiningGame: false,
+        creatingGame: false,
         inLobby: false,
         isGameAdmin: false,
         name: "",
@@ -29,7 +30,7 @@ export function game(
                 uuid: action.game.uuid,
             });
         case gameConstants.CREATE_GAME_FAILURE:
-            return Object.assign({}, state, {});
+            return Object.assign({}, state, { creatingGame: false });
 
         // Join game cases
         case gameConstants.JOIN_GAME_REQUEST:
@@ -45,7 +46,7 @@ export function game(
                 name: action.game.gameName,
             });
         case gameConstants.JOIN_GAME_FAILURE:
-            return Object.assign({}, state, {});
+            return Object.assign({}, state, { joiningGame: false });
 
         // Quit game cases
         case gameConstants.QUIT_GAME_REQUEST:
@@ -80,8 +81,6 @@ export function game(
 
         // Clean chat log case
         case chatConstants.CLEAN_CHAT_LOG:
-            console.log("state.uuid :>> ", state.uuid);
-            console.log("action :>> ", action);
             if (state.uuid !== null && action.uuid === state.uuid)
                 return Object.assign({}, state, {
                     chatLog: [],
