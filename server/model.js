@@ -12,6 +12,7 @@ export const model = {
     getUsers,
     getQuiz,
     sendQuiz,
+    getCards,
     getActions,
     getResultGame,
 };
@@ -96,6 +97,13 @@ function sendQuiz(quiz) {
         quiz
     );
     return true;
+}
+
+function getCards() {
+    const res = db
+        .prepare(`SELECT name, cost, score, background FROM Actions`)
+        .all();
+    return res;
 }
 
 function getActions(letter) {

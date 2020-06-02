@@ -1,4 +1,3 @@
-
 import React, { Component } from "react";
 import card_background1 from "assets/cards/background1.png";
 import card_background2 from "assets/cards/background2.png";
@@ -15,8 +14,8 @@ class Card extends Component {
                 card_background1,
                 card_background2,
                 card_background3,
-                card_background4
-            ]
+                card_background4,
+            ],
         };
     }
 
@@ -30,9 +29,9 @@ class Card extends Component {
                         alt="Card image"
                     />
                     <div className="card-body">
-                        <p className="card-text">{this.props.data.name}</p>
+                        <p className="card-text">{this.props.data.Name}</p>
                         <div className="d-flex justify-content-center">
-                            <p className="mr-2">{this.props.data.cost}</p>
+                            <p className="mr-2">{this.props.data.Cost}</p>
                             <img
                                 src={argent}
                                 alt="Cout en argent"
@@ -49,7 +48,7 @@ class Card extends Component {
                 </div>
             </div>
         );
-    };
+    }
 }
 
 export { Card };

@@ -157,6 +157,15 @@ router.post("/get_actions", async (req, res) => {
     }
 });
 
+router.get("/get_cards", async (req, res) => {
+    try {
+        const cards = model.getCards();
+        return res.status(200).json({ cards });
+    } catch (e) {
+        res.status(400).json({ message: "Unexpected error" });
+    }
+});
+
 router.get("/", (req, res) => {
     return res.json({ message: "hehe" });
 });

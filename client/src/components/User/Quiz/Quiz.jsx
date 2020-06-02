@@ -73,7 +73,7 @@ function Quiz() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        if (Object.values(inputs).some((x) => x !== null && x !== "")) {
+        if (Object.values(inputs).every((x) => x !== null && x !== "")) {
             const letter = maxCount(Object.values(inputs).join(""))[0][0];
             dispatch(userActions.sendQuiz(letter));
         } else
