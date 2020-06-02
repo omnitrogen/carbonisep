@@ -1,31 +1,42 @@
 # carbonisep
 
-Triangle des Bermudes
+Par l'équipe **Triangle des Bermudes**
 
 ## Installation
 
--   Installer Node.js et npm
+1. Installer Node.js et npm
 
-> Pour Windows:
+**Windows**
 
-Télécharger l'installer Node.js [ici](https://nodejs.org/dist/v14.4.0/node-v14.4.0-x64.msi), puis l'exécuter.
+> Télécharger l'installer Node.js [ici](https://nodejs.org/dist/v14.4.0/node-v14.4.0-x64.msi), puis l'exécuter.
 
-Pour vérifier l'installation, ouvrir un terminal et y écrire `node -v` et `npm -v`, cela devrait afficher les versions de node et npm.
+> Pour vérifier l'installation, ouvrir un terminal et y écrire `node -v` et `npm -v`, cela devrait afficher les versions de node et npm.
 
-> Pour Ubuntu:
+**Ubuntu**
 
+> ```bash
+> curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+> sudo apt-get install -y nodejs
+> ```
+
+2. Télécharger le zip du projet depuis github [ici](https://github.com/omnitrogen/carbonisep/archive/integration.zip)
+
+3. Extraire le zip et ouvrir un terminal dans le dossier `carbonisep-integration`
+
+(Pour Windows, aller avec l'explorateur de fichier dans le dossier `carbonisep-integration` puis clic droit > Ouvrir un terminal ici.)
+
+4. Lancer les commandes :
+
+(Commande à rentrer seulement pour Windows. Cela permet d'installer des outils qui servent à compiler les bibliothèques node js.) :
+
+```bash
+npm install --global --production windows-build-tools # only for Windows
 ```
-curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-sudo apt-get install -y nodejs
-```
 
--   Télécharger le zip du projet depuis github [ici](https://github.com/omnitrogen/carbonisep/archive/integration.zip)
+Et enfin pour installer les bibliothèques et lancer les serveurs front et back :
 
--   Extraire le zip et ouvrir un terminal dans le dossier `carbonisep-integration`
-
-Sur un terminal:
-
-```
+```bash
+npm i
 npm run install
 npm run start
 ```
