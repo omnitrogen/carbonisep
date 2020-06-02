@@ -55,7 +55,7 @@ class Cards extends Component {
                                 className="ml-2"
                                 src={argent}
                                 alt="Cout en argent"
-                                style={{ width: "4%", height: "80%" }}
+                                style={{ width: '4%', height: '80%' }}
                             />
                             <p className="ml-3">Score:</p>
                             <p className="font-weight-bold ml-1">
@@ -65,37 +65,35 @@ class Cards extends Component {
                                 className="ml-2"
                                 src={score}
                                 alt="Score actuel"
-                                style={{ width: "4%", height: "80%" }}
+                                style={{ width: '4%', height: '80%' }}
                             />
                         </div>
                     </div>
-                    <div className="d-flex justify-content-around pt-5">
-                        {/* Cards are updated when turn is updated */}
-                        {this.state.load && (
-                            <div>
-                                <Card
-                                    data={this.state.cards[this.state.turn * 3]}
-                                    handleSubmit={this.handleChosenCard}
-                                />
-                                <Card
-                                    data={
-                                        this.state.cards[
-                                            this.state.turn * 3 + 1
-                                        ]
-                                    }
-                                    handleSubmit={this.handleChosenCard}
-                                />
-                                <Card
-                                    data={
-                                        this.state.cards[
-                                            this.state.turn * 3 + 2
-                                        ]
-                                    }
-                                    handleSubmit={this.handleChosenCard}
-                                />
-                            </div>
-                        )}
-                    </div>
+                    {this.state.load && (
+                        <div className="d-flex justify-content-around pt-5">
+                            {/* Cards are updated when turn is updated */}
+                            <Card
+                                data={this.state.cards[this.state.turn * 3]}
+                                handleSubmit={this.handleChosenCard}
+                            />
+                            <Card
+                                data={
+                                    this.state.cards[
+                                        this.state.turn * 3 + 1
+                                    ]
+                                }
+                                handleSubmit={this.handleChosenCard}
+                            />
+                            <Card
+                                data={
+                                    this.state.cards[
+                                        this.state.turn * 3 + 2
+                                    ]
+                                }
+                                handleSubmit={this.handleChosenCard}
+                            />
+                        </div>
+                    )}
                 </div>
             </div>
         );

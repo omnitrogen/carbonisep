@@ -47,7 +47,12 @@ export function quiz(state = initialState, action) {
             return Object.assign({}, state, {});
 
         case userConstants.QUIZ_CLEAR:
-            return initialState;
+            return {
+                hasAnsweredToQuiz: false,
+                letter: null,
+                quiz: [],
+                actions: { actions: [] },
+            };
 
         default:
             return state;
