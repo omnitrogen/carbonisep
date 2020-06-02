@@ -17,7 +17,6 @@ function Navigation() {
 
     function handleLogout() {
         dispatch(userActions.logout());
-        dispatch(userActions.clearQuiz());
     }
 
     return (

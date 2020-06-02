@@ -1,20 +1,19 @@
 import { userConstants } from "../_constants";
 
 let letter = localStorage.getItem("quiz");
-const initialState =
-    letter != null
-        ? {
-              hasAnsweredToQuiz: true,
-              letter: letter,
-              quiz: [],
-              actions: { actions: [] },
-          }
-        : {
-              hasAnsweredToQuiz: false,
-              letter: null,
-              quiz: [],
-              actions: { actions: [] },
-          };
+const initialState = typeof letter === "string"
+    ? {
+          hasAnsweredToQuiz: true,
+          letter: letter,
+          quiz: [],
+          actions: { actions: [] },
+      }
+    : {
+          hasAnsweredToQuiz: false,
+          letter: "",
+          quiz: [],
+          actions: { actions: [] },
+      };
 
 export function quiz(state = initialState, action) {
     switch (action.type) {
@@ -45,9 +44,6 @@ export function quiz(state = initialState, action) {
             });
         case userConstants.GET_ACTIONS_FAILURE:
             return Object.assign({}, state, {});
-
-        case userConstants.QUIZ_CLEAR:
-            return initialState;
 
         default:
             return state;
