@@ -2,13 +2,14 @@ import React from "react";
 import JoinOrCreateGame from "../../Templates/JoinOrCreateGame";
 
 import { Navigation } from "components/App/Navigation";
+import game from "assets/game.png";
 
 function About() {
     return (
         <div>
             <Navigation />
-            <div className="p-3 d-flex justify-content-center pt-5">
-                <div className="border border-dark rounded w-80 p-4">
+            <div className="p-5 d-flex justify-content-center mb-4">
+                <div className="border border-dark rounded w-75 p-5">
                     <h1>Pourquoi CarbonISEP ?</h1>
                     <p>
                         Tout le monde se soucie de l'écologie, mais la masse
@@ -27,7 +28,13 @@ function About() {
                     </p>
                     <h2>Règles du jeu</h2>
                     <p>
-                        JOLIE PHOTO DE PARTIE MULTI
+                        <div className="d-flex justify-content-center m-5">
+                            <img
+                                src={game}
+                                alt="Game teaser"
+                                style={{ width: "50%" }}
+                             />
+                        </div>
                         <br />
                         Le principe est simple. A chaque tour de jeu, tu dois
                         choisir une action à effectuer pour réduire ton

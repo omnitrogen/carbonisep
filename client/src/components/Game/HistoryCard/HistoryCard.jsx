@@ -22,16 +22,18 @@ class HistoryCard extends Component {
     render() {
         return (
             <div>
-                <div className="card text-center m-3">
-                    <img
+                {!this.props.card.name == "" &&
+                    <div className="card text-center m-3">
+                        <img
                         className="card-img-top"
-                        src={this.state.background[2] /*replace 1 by this.props.data.background*/} 
-                        alt="Card image"
-                    />
-                    <div className="card-body">
-                        <p className="card-text">{"oui"}</p> {/*replace "oui" by this.props.data.name*/}
+                        src={this.state.background[this.props.card.background]}
+                            alt="Card image"
+                        />
+                        <div className="card-body">
+                        <p className="card-text">{this.props.card.name}</p>
+                        </div>
                     </div>
-                </div>
+                }
             </div>
         );
     };
