@@ -18,6 +18,8 @@ class Game extends Component {
         };
         this.history = React.createRef();
         this.stats = React.createRef();
+        this.id = 1;
+        this.idP = 1;
     }
 
     handleEndTurn = (cardData, continueGame) => {
@@ -64,7 +66,13 @@ class Game extends Component {
                         </div>
                     </div>
                 )}{" "}
-                {!this.state.continueGame && <EndGame />}
+                {!this.state.continueGame && (
+                    <EndGame
+                        idGame={this.id}
+                        idPlayer={this.idP}
+                        score={this.state.score}
+                    />
+                )}
             </div>
         );
     }

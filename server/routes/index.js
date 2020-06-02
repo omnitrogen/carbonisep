@@ -131,8 +131,12 @@ router.post("/get_quiz", async (req, res) => {
 });
 
 router.get("/endGame", (req, res) => {
-    res.json(model.getResultGame(req.idGame));
-    return res;
+    const result = {
+        idGame: req.query.idGame,
+        idPlayer: req.query.idPlayer,
+        score: req.query.score,
+    };
+    model.setScore(result);
 });
 router.post("/send_quiz", async (req, res) => {
     const userId = req.body.user.id;

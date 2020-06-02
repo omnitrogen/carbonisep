@@ -38,7 +38,6 @@ function Home() {
                                 alt="Game teaser"
                                 style={{ width: "50%" }}
                             />
-                            *
                         </div>
                     </p>
                     <h2>Entrez dans le game</h2>

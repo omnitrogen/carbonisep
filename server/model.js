@@ -14,6 +14,7 @@ export const model = {
     sendQuiz,
     getCards,
     getActions,
+    setScore,
     getResultGame,
 };
 
@@ -55,10 +56,17 @@ function joinGame(game) {
     return res;
 }
 
+function setScore(result) {
+    db.prepare(
+        `INSERT INTO GameResults (gameId, playerId, score) VALUES (@idGame, @idPlayer, @score)`
+    ).run(result);
+    return true;
+}
+
 function getResultGame(idGame) {
     const res = db
         .prepare(
-            `SELECT u.name, gr.score FROM GameResults as gr 
+            `SELECT u.Username, gr.score FROM GameResults as gr 
                             JOIN Users as u ON u.id = gr.playerId
                             WHERE gr.gameId == @idGame`
         )

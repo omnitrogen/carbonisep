@@ -30,7 +30,7 @@ class Cards extends Component {
 
     handleChosenCard = (cardData) => {
         //Assuming the game will be 10 turns long
-        var continueGame = this.state.turn != 10;
+        var continueGame = this.state.turn != 2;
 
         //The game continues unless it's the last turn, then Game will render the endgame
         this.props.onSelectCard(cardData, continueGame);
