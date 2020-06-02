@@ -25,7 +25,7 @@ class EndGame extends Component {
                 </li>
             );
         }
-        return <ul>lis</ul>;
+        return <ul>{lis}</ul>;
     }
 }
 

@@ -58,10 +58,8 @@ function joinGame(game) {
 function getResultGame(idGame) {
     const res = db
         .prepare(
-            `SELECT u.name, gr.score
-                            FROM GameResults as gr 
-                            JOIN Users as u
-                            ON u.id = gr.playerId
+            `SELECT u.name, gr.score FROM GameResults as gr 
+                            JOIN Users as u ON u.id = gr.playerId
                             WHERE gr.gameId == @idGame`
         )
         .all({ idGame });

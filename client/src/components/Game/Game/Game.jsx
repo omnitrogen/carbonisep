@@ -64,10 +64,7 @@ class Game extends Component {
                         </div>
                     </div>
                 )}{" "}
-                {!this.state.continueGame &&
-                    {
-                        /* <EndGame /> */
-                    }}
+                {!this.state.continueGame && <EndGame />}
             </div>
         );
     }
