@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import { Button } from "react-bootstrap";
+import { Nav, Button, ListGroup } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import JoinOrCreateGame from "../../Templates/JoinOrCreateGame";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -11,6 +12,7 @@ import { chatActions } from "redux/_actions";
 function Home() {
     const dispatch = useDispatch();
     const uuid = useSelector((state) => state.game.uuid);
+    const loggedIn = useSelector((state) => state.authentication.loggedIn);
 
     useEffect(() => {
         dispatch(chatActions.cleanChat(uuid));
@@ -36,30 +38,38 @@ function Home() {
                                 alt="Game teaser"
                                 style={{ width: "50%" }}
                             />
+                            *
                         </div>
                     </p>
                     <h2>Entrez dans le game</h2>
+                    <br />
                     <p>
                         Quoi de mieux qu'un petit jeu entre amis ? Lances la
-                        partie dès maintenant en te créant un compte
+                        partie dès maintenant en{" "}
+                        <Link to="/login">
+                            te connectant ou en créant un compte
+                        </Link>
                     </p>
-                    <JoinOrCreateGame />
                     <p>
                         Tu veux juste avoir quelques astuces pour être écolo ?
-                        On a quelques <a href="tips">tips</a> pour toi alors ;)
-                        <br />
-                        CarbonISEP peut également te proposer des solutions
-                        écolos sur mesure, il faut juste remplir un petit
-                        questionnaire
+                        On a quelques <Link to="/tips">tips</Link> pour toi
+                        alors ;)
                     </p>
-                    <Button
-                        variant="primary"
-                        href="login"
-                        type="submit"
-                        className="mt-3"
-                    >
-                        Connecte-toi pour accéder au questionnaire!
-                    </Button>
+                    {!loggedIn && (
+                        <p>
+                            CarbonISEP peut également te proposer des solutions
+                            écolos sur mesure, il faut juste remplir un petit
+                            questionnaire après s'être{" "}
+                            <Link to="/login">connecté</Link>
+                        </p>
+                    )}
+                    {loggedIn && (
+                        <p>
+                            CarbonISEP peut également te proposer des solutions
+                            écolos sur mesure, il faut juste remplir un petit{" "}
+                            <Link to="/login">questionnaire</Link>
+                        </p>
+                    )}
                 </div>
             </div>
         </div>

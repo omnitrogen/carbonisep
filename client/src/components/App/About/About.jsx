@@ -1,10 +1,12 @@
 import React from "react";
-import JoinOrCreateGame from "../../Templates/JoinOrCreateGame";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Navigation } from "components/App/Navigation";
 import game from "assets/game.png";
 
 function About() {
+    const loggedIn = useSelector((state) => state.authentication.loggedIn);
     return (
         <div>
             <Navigation />
@@ -33,7 +35,7 @@ function About() {
                                 src={game}
                                 alt="Game teaser"
                                 style={{ width: "50%" }}
-                             />
+                            />
                         </div>
                         <br />
                         Le principe est simple. A chaque tour de jeu, tu dois
@@ -50,9 +52,21 @@ function About() {
                         <br />
                         Tu pourrais même apprendre une chose ou deux au passage!
                         <br />
-                        Rejoins la partie dès maintenant
+                        {loggedIn && (
+                            <div>
+                                <Link to="/join">
+                                    Rejoins la partie dès maintenant !
+                                </Link>
+                            </div>
+                        )}
+                        {!loggedIn && (
+                            <div>
+                                <Link to="/login">
+                                    Rejoins la partie dès maintenant !
+                                </Link>
+                            </div>
+                        )}
                         <br />
-                        <JoinOrCreateGame />
                     </p>
 
                     <h2>Conseils et Astuces</h2>
@@ -61,8 +75,11 @@ function About() {
                         possibles ou tu veux apprendre plein de gestes écolos
                         cools?
                         <br />
-                        Va voir nos <a href="tips">Conseils et Astuces</a> pour
-                        en savoir plus
+                        <div>
+                            Va voir nos{" "}
+                            <Link to="/tips">Conseils et Astuces</Link> pour en
+                            savoir plus
+                        </div>
                     </p>
                 </div>
             </div>
