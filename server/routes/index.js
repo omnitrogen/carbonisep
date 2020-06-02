@@ -93,6 +93,11 @@ router.get("/quizz", (req, res) => {
     return res;
 });
 
+router.get("/endGame", (req, res) => {
+    res.json(model.getResultGame(req.idGame));
+    return res;
+});
+
 router.get("/", (req, res) => {
     return res.json({ message: "hehe" });
 });

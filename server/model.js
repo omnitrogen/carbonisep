@@ -8,6 +8,7 @@ export const model = {
     loginUser,
     join,
     getQuestions
+    getResultGame,
 }
 
 function getUsers() {
@@ -49,5 +50,14 @@ function join(code) {
 
 function getQuestions() {
     const res = db.prepare(`SELECT * FROM QuestionsQuizz`).all();
+    return res;
+}
+
+function getResultGame(idGame){
+    const res = db.prepare(`SELECT u.name, gr.score
+                            FROM GameResults as gr 
+                            JOIN Users as u
+                            ON u.id = gr.playerId
+                            WHERE gr.idGame == @idGame`).all({ idGame });
     return res;
 }
