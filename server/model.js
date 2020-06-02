@@ -61,7 +61,7 @@ function getResultGame(idGame) {
                             FROM GameResults as gr 
                             JOIN Users as u
                             ON u.id = gr.playerId
-                            WHERE gr.idGame == @idGame`
+                            WHERE gr.gameId == @idGame`
         )
         .all({ idGame });
     return res;
