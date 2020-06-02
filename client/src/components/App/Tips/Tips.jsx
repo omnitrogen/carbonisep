@@ -38,9 +38,25 @@ function Tips() {
                         </p>
                     )}
                     {loggedIn && !hasAnsweredToQuiz && (
-                        <Nav.Link as={Link} to="/quiz" style={{ outline: 0 }}>
-                            <Button variant="primary">Answer the quiz</Button>
-                        </Nav.Link>
+                        <>
+                            <p>
+                                Ici tu peux avoir quelques tips pour être plus
+                                écolo.
+                                <br />
+                                Si tu veux qu'on te propose des tips sur-mesure
+                                et faciles à faire, tu peux répondre à un
+                                questionnaire!
+                            </p>
+                            <Nav.Link
+                                as={Link}
+                                to="/quiz"
+                                style={{ outline: 0 }}
+                            >
+                                <Button variant="primary">
+                                    Answer the quiz
+                                </Button>
+                            </Nav.Link>
+                        </>
                     )}
                     {!loggedIn && (
                         <Nav.Link as={Link} to="/login" style={{ outline: 0 }}>
