@@ -11,7 +11,7 @@ export default class JoinOrCreateGame extends Component {
                     <div style={{ borderTop: "5px solid grey" }}></div>
                     <Button
                         variant="primary"
-                        href="login"
+                        href="register"
                         type="submit"
                         className="mt-3"
                     >
