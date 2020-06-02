@@ -7,28 +7,28 @@ export const model = {
     registerUser,
     loginUser,
     join,
-    getQuestions
+    getQuestions,
     getResultGame,
-}
+};
 
 function getUsers() {
     const res = db.prepare("SELECT * FROM User").all();
     return res;
-};
+}
 
 function checkIfUserAlreadyExists(username) {
     const res = db
         .prepare(`SELECT Username FROM Users WHERE Username == @username`)
         .all({ username });
     return res && res.length ? true : false;
-};
+}
 
 function registerUser(user) {
     db.prepare(
         `INSERT INTO Users (FirstName, LastName, Username, Password) VALUES (@firstName, @lastName, @username, @password)`
     ).run(user);
     return true;
-};
+}
 
 function loginUser(user) {
     const res = db
@@ -37,7 +37,7 @@ function loginUser(user) {
         )
         .get(user);
     return res;
-};
+}
 
 function join(code) {
     const res = db.prepare("SELECT * FROM Game").all();
@@ -53,11 +53,15 @@ function getQuestions() {
     return res;
 }
 
-function getResultGame(idGame){
-    const res = db.prepare(`SELECT u.name, gr.score
+function getResultGame(idGame) {
+    const res = db
+        .prepare(
+            `SELECT u.name, gr.score
                             FROM GameResults as gr 
                             JOIN Users as u
                             ON u.id = gr.playerId
-                            WHERE gr.idGame == @idGame`).all({ idGame });
+                            WHERE gr.idGame == @idGame`
+        )
+        .all({ idGame });
     return res;
 }
