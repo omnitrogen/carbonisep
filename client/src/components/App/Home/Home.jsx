@@ -3,13 +3,14 @@ import { Button } from "react-bootstrap";
 import JoinOrCreateGame from "components/templates/JoinOrCreateGame";
 
 import { Navigation } from "components/App/Navigation";
+import game from "assets/game.png";
 
 function Home() {
     return (
         <div>
             <Navigation />
             <div className="p-3 d-flex justify-content-center pt-5">
-                <div className="border border-dark rounded w-80 p-4">
+                <div className="border border-dark rounded w-75 p-5">
                     <h1>CarbonISEP</h1>
                     <h2>Agir maintenant</h2>
                     <p>
@@ -18,8 +19,14 @@ function Home() {
                         astuces pour s'y mettre au quotidien :)
                         <br />
                         Il n'y a pas besoin de consacrer sa vie à l'écologie,
-                        mais tous les petits gestes comptent METTRE ICI IMAGE
-                        PARTIE
+                        mais tous les petits gestes comptent
+                        <div className="d-flex justify-content-center m-5">
+                            <img
+                                src={game}
+                                alt="Game teaser"
+                                style={{ width: "50%" }}
+                            />
+                        </div>
                     </p>
                     <h2>Entrez dans le game</h2>
                     <p>

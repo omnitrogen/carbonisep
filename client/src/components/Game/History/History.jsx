@@ -7,16 +7,30 @@ class History extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            card_1: {
-                background: 1,
-                text: "Planter des fleurs"
+            card1: {
+                name: "",
+                background: 1
             },
-            card_2: {
-                background: 2,
-                text: "Supprimer ses mails"
+            card2: {
+                name: "",
+                background: 1
             }
         };
     }
+
+    //On new card chosen, the last card becomes the second last card and the new card becomes the last card
+    newCard = (cardData) => {
+        this.setState({
+            card2: this.state.card1
+        });
+
+        this.setState({
+            card1: {
+                name: cardData.name,
+                background: cardData.background
+            }
+        });
+    };
 
     render() {
         return (
@@ -25,8 +39,8 @@ class History extends Component {
                     <div className="w-80 p-2">
                         <h1>Historique</h1>
                         <div className="d-flex">
-                            <HistoryCard card={this.state.card_1} />
-                            <HistoryCard card={this.state.card_2} />
+                            <HistoryCard card={this.state.card1} />
+                            <HistoryCard card={this.state.card2} />
                         </div>
                     </div>
                 </div>

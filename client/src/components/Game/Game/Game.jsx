@@ -17,14 +17,20 @@ class Game extends Component {
             money: 50,
             continueGame: true
         };
+        this.history = React.createRef();
+        this.stats = React.createRef();
     }
 
     handleEndTurn = (cardData, continueGame) => {
+        var newScore = this.state.score + cardData.score
         this.setState({
-            score: this.score + cardData.score,
-            money: this.money - cardData.cost,
+            score: newScore,
+            money: this.state.money - cardData.cost,
             continueGame: continueGame
         });
+
+        this.history.current.newCard(cardData);
+        this.stats.current.updateScore(newScore)
     }
 
     render() {
@@ -41,13 +47,13 @@ class Game extends Component {
                                     alt="logo"
                                 />
                             </Navbar.Brand>
-                            <Stats />
+                            <Stats ref={this.stats}/>
                         </div>
                         <div className="mw-25 mt-5">
                             <Cards score={this.state.score} money={this.state.money} onSelectCard={this.handleEndTurn} />
                         </div>
-                        <div className="ml-4 d-flex flex-column justify-content-between" style={{ maxWidth: '25%' }}>
-                            <History/>
+                    <div className="ml-4 d-flex flex-column justify-content-between" style={{ maxWidth: '25%' }}>
+                        <History ref={this.history}/>
                             <Participants />
                         </div>
                     </div>
