@@ -93,6 +93,22 @@ router.get("/quizz", (req, res) => {
     return res;
 });
 
+router.get("/quizzResult", (req, res) => {
+    var answers = req.query.answers;
+    var c_max = "";
+    var count_max = 0;
+
+    for (let c of "ABCD") {
+        let count = answers.split(c).length - 1;
+        if (count >= count_max) {
+            c_max = c;
+            count_max = count;
+        }
+    }
+    res.json({ profile: c_max });
+    model.setProfileQuizz(id, profile);
+});
+
 router.get("/", (req, res) => {
     return res.json({ message: "hehe" });
 });

@@ -8,6 +8,8 @@ class Quiz extends Component {
         this.state = {
             current_question: 0,
             questionsQuizz: [""],
+            answers: [],
+            profile: "",
         };
     }
     componentWillMount() {
@@ -19,39 +21,9 @@ class Quiz extends Component {
                 });
             });
     }
-
     componentDidMount() {
         var question1 = document.getElementById("q0");
         question1.classList.remove("d-none");
-    }
-    question(num) {
-        var lis = [];
-        var resultats = (
-            this.state.questionsQuizz[num]["resultats"] || ""
-        ).split(",");
-        for (let i = 0; i < 4; i++) {
-            lis.push(
-                <Form.Check
-                    required
-                    type="radio"
-                    label={this.state.questionsQuizz[num]["reponse" + i]}
-                    value={resultats[i]}
-                    name={"formHorizontalRadios" + num}
-                    id={"formHorizontalRadios" + i}
-                />
-            );
-        }
-        return (
-            <Form.Group
-                controlId="formBasicCheckbox"
-                id={"q" + num}
-                className="d-none"
-            >
-                <Form.Label>{this.state.questionsQuizz[num].nom}</Form.Label>
-
-                {lis}
-            </Form.Group>
-        );
     }
 
     prev = () => {
@@ -73,7 +45,6 @@ class Quiz extends Component {
                 .parentElement.classList.add("disabled");
         }
     };
-
     next = () => {
         document
             .getElementById("prev")
@@ -94,36 +65,104 @@ class Quiz extends Component {
         }
     };
 
-    render() {
+    handleOptionChange = (event) => {
+        var resultats = this.state.questionsQuizz[this.state.current_question][
+            "resultats"
+        ].split(",");
+        this.state.answers[this.state.current_question] =
+            resultats[event.target.value];
+    };
+
+    question(num) {
+        var lis = [];
+        for (let i = 0; i < 4; i++) {
+            lis.push(
+                <Form.Check
+                    required
+                    type="radio"
+                    label={this.state.questionsQuizz[num]["reponse" + i]}
+                    value={i}
+                    name={"formHorizontalRadios" + num}
+                    onChange={this.handleOptionChange}
+                />
+            );
+        }
+        return (
+            <Form.Group
+                controlId="formBasicCheckbox"
+                id={"q" + num}
+                className="d-none"
+            >
+                <Form.Label>{this.state.questionsQuizz[num].nom}</Form.Label>
+
+                {lis}
+            </Form.Group>
+        );
+    }
+
+    submitQuizz = async (event) => {
+        event.preventDefault();
+        console.log(this.state.answers);
+        this.state.profile = await fetch(
+            "http://localhost:8000/quizzResult?answers=" +
+                this.state.answers.join("")
+        )
+            .then((res) => res.json())
+            .then((res) => res.profile);
+        this.forceUpdate();
+        console.log(this.state.profile);
+    };
+
+    affichageQuizz() {
         var questions = [];
         for (let i = 0; i < this.state.questionsQuizz.length; i++) {
             questions.push(this.question(i));
         }
         return (
             <div>
+                <h1>Questionnaire</h1>
+                <Pagination>
+                    <Pagination.Prev
+                        onClick={this.prev}
+                        id="prev"
+                        className="disabled"
+                    />
+                    <Pagination.Next onClick={this.next} id="next" />
+                </Pagination>
+                <Form
+                    onSubmit={this.submitQuizz}
+                    feedback="You must agree before submitting."
+                >
+                    {questions}
+                    <Button
+                        className="d-none"
+                        id={"q" + this.state.questionsQuizz.length}
+                        variant="primary"
+                        type="submit"
+                    >
+                        valider le quizz
+                    </Button>
+                </Form>
+            </div>
+        );
+    }
+    affichageResult() {
+        return (
+            <div>
+                <h1>Résultats</h1>
+                <p>Vous êtes profile {this.state.profile}</p>
+            </div>
+        );
+    }
+    render() {
+        return (
+            <div>
                 <ConnectedNavbars />
                 <div className="p-3 d-flex justify-content-center pt-5">
                     <div className="border border-dark rounded w-80 p-4">
-                        <h1>Questionnaire</h1>
-                        <Pagination>
-                            <Pagination.Prev
-                                onClick={this.prev}
-                                id="prev"
-                                className="disabled"
-                            />
-                            <Pagination.Next onClick={this.next} id="next" />
-                        </Pagination>
-                        <Form action="quizResults">
-                            {questions}
-                            <Button
-                                className="d-none"
-                                id={"q" + this.state.questionsQuizz.length}
-                                variant="primary"
-                                type="submit"
-                            >
-                                Submit
-                            </Button>
-                        </Form>
+                        {this.state.profile == ""
+                            ? this.affichageQuizz()
+                            : this.affichageResult()}
                     </div>
                 </div>
             </div>
