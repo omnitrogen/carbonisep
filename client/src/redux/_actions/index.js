@@ -1,2 +1,4 @@
 export * from "./alert.actions";
 export * from "./user.actions";
+export * from "./game.actions";
+export * from "./chat.actions";

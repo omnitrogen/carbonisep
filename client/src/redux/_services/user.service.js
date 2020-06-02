@@ -4,6 +4,9 @@ export const userService = {
     login,
     logout,
     register,
+    getQuiz,
+    sendQuiz,
+    getActions,
 };
 
 function login(username, password) {
@@ -21,6 +24,7 @@ function login(username, password) {
         .then((user) => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             localStorage.setItem("user", JSON.stringify(user));
+            localStorage.setItem("quiz", user.letter);
             return user;
         });
 }
@@ -28,6 +32,7 @@ function login(username, password) {
 function logout() {
     // remove user from local storage to log user out
     localStorage.removeItem("user");
+    localStorage.removeItem("quiz");
 }
 
 function register(user) {
@@ -41,6 +46,51 @@ function register(user) {
         `${process.env.REACT_APP_API_URL}/register`,
         requestOptions
     ).then(handleResponse);
+}
+
+function getQuiz() {
+    const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+    };
+    return fetch(`${process.env.REACT_APP_API_URL}/get_quiz`, requestOptions)
+        .then(handleResponse)
+        .then((quiz) => {
+            // store user details and jwt token in local storage to keep user logged in between page refreshes
+            return quiz;
+        });
+}
+
+function sendQuiz(letter) {
+    let user = JSON.parse(localStorage.getItem("user"));
+
+    const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user, letter }),
+    };
+
+    return fetch(`${process.env.REACT_APP_API_URL}/send_quiz`, requestOptions)
+        .then(handleResponse)
+        .then((letter) => {
+            // store user details and jwt token in local storage to keep user logged in between page refreshes
+            localStorage.setItem("quiz", letter.letter);
+            return letter;
+        });
+}
+
+function getActions(letter) {
+    const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ letter }),
+    };
+
+    return fetch(`${process.env.REACT_APP_API_URL}/get_actions`, requestOptions)
+        .then(handleResponse)
+        .then((actions) => {
+            return actions;
+        });
 }
 
 function handleResponse(response) {

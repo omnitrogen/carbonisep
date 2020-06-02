@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import JoinOrCreateGame from "../../Templates/JoinOrCreateGame";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Navigation } from "components/App/Navigation";
 import game from "assets/game.png";
 
+import { chatActions } from "redux/_actions";
+
 function Home() {
+    const dispatch = useDispatch();
+    const uuid = useSelector((state) => state.game.uuid);
+
+    useEffect(() => {
+        dispatch(chatActions.cleanChat(uuid));
+    }, []);
+
     return (
         <div>
             <Navigation />
