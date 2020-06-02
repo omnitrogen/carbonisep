@@ -1,8 +1,7 @@
 import { userConstants } from "../_constants";
 
 let letter = localStorage.getItem("quiz");
-console.log(letter);
-const initialState = letter
+const initialState = typeof letter === "string"
     ? {
           hasAnsweredToQuiz: true,
           letter: letter,
