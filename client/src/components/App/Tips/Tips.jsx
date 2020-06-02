@@ -60,7 +60,7 @@ function Tips() {
                     )}
                     {!loggedIn && (
                         <Nav.Link as={Link} to="/login" style={{ outline: 0 }}>
-                            <Button variant="primary">Go login</Button>
+                            <Button variant="primary">Login</Button>
                         </Nav.Link>
                     )}
                     {loggedIn && hasAnsweredToQuiz && (
