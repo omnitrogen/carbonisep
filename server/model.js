@@ -13,6 +13,7 @@ export const model = {
     getQuiz,
     sendQuiz,
     getActions,
+    getResultGame,
 };
 
 function userAlreadyExists(username) {
@@ -53,6 +54,18 @@ function joinGame(game) {
     return res;
 }
 
+function getResultGame(idGame) {
+    const res = db
+        .prepare(
+            `SELECT u.name, gr.score
+                            FROM GameResults as gr 
+                            JOIN Users as u
+                            ON u.id = gr.playerId
+                            WHERE gr.idGame == @idGame`
+        )
+        .all({ idGame });
+    return res;
+}
 function createGame(game) {
     db.prepare(`INSERT INTO Games VALUES (@uuid, @userId, @name)`).run(game);
     db.prepare(`UPDATE Users SET GameId=@uuid WHERE Id=@userId;`).run(game);

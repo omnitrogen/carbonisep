@@ -130,6 +130,10 @@ router.post("/get_quiz", async (req, res) => {
     }
 });
 
+router.get("/endGame", (req, res) => {
+    res.json(model.getResultGame(req.idGame));
+    return res;
+});
 router.post("/send_quiz", async (req, res) => {
     const userId = req.body.user.id;
     const letter = req.body.letter;
@@ -151,6 +155,10 @@ router.post("/get_actions", async (req, res) => {
     } catch {
         res.status(400).json({ message: "Unexpected error" });
     }
+});
+
+router.get("/", (req, res) => {
+    return res.json({ message: "hehe" });
 });
 
 export default router;
