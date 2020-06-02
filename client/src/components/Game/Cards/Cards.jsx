@@ -24,7 +24,7 @@ class Cards extends Component {
                     name: "Planter une fleur",
                     cost: 3,
                     score: 20,
-                    background: 2 
+                    background: 2
                 },
                 {
                     name: "Planter un arbre",
@@ -56,7 +56,7 @@ class Cards extends Component {
 
     handleChosenCard = (cardData) => {
         //Assuming the game will be 10 turns long
-        var continueGame = this.state.turn == 10;
+        var continueGame = this.state.turn != 10;
 
         //The game continues unless it's the last turn, then Game will render the endgame
         this.props.onSelectCard(cardData, continueGame);

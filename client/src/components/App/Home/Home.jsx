@@ -4,6 +4,7 @@ import JoinOrCreateGame from "../../Templates/JoinOrCreateGame";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Navigation } from "components/App/Navigation";
+import game from "assets/game.png";
 
 import { chatActions } from "redux/_actions";
 
@@ -19,7 +20,7 @@ function Home() {
         <div>
             <Navigation />
             <div className="p-3 d-flex justify-content-center pt-5">
-                <div className="border border-dark rounded w-80 p-4">
+                <div className="border border-dark rounded w-75 p-5">
                     <h1>CarbonISEP</h1>
                     <h2>Agir maintenant</h2>
                     <p>
@@ -28,8 +29,14 @@ function Home() {
                         astuces pour s'y mettre au quotidien :)
                         <br />
                         Il n'y a pas besoin de consacrer sa vie à l'écologie,
-                        mais tous les petits gestes comptent METTRE ICI IMAGE
-                        PARTIE
+                        mais tous les petits gestes comptent
+                        <div className="d-flex justify-content-center m-5">
+                            <img
+                                src={game}
+                                alt="Game teaser"
+                                style={{ width: "50%" }}
+                            />
+                        </div>
                     </p>
                     <h2>Entrez dans le game</h2>
                     <p>

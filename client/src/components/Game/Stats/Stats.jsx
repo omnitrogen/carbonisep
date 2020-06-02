@@ -27,10 +27,7 @@ class Stats extends Component {
             ],
             score: [
                 ['Tour', 'Score'],
-                [1, 1000],
-                [2, 1170],
-                [3, 660],
-                [4, 1030],
+                [0,0],
             ],
         };
     }
@@ -49,8 +46,8 @@ class Stats extends Component {
     };
 
     updateScore = (newTurnScore) => {
-        this.state.score.push([this.state.score.length, newTurnScore]);
-        this.state.scores[6][1] = newTurnScore;
+        this.state.score.push([this.state.score.length - 1, newTurnScore]);
+        this.state.scores[6][1] = ['You', newTurnScore, '#88B03C', null];
     };
 
     render() {

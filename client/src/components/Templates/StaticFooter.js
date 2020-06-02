@@ -14,7 +14,7 @@ export default class Footer extends React.Component {
                     <Navbar.Brand href="home">
                         <img src={logo} style={{ height: 50 }} alt="logo" />
                     </Navbar.Brand>
-                    <p>
+                    <p className="overflow-hidden mt-4 mb-2">
                         ©2020, Triangles des Bermudes. Tous droits réservés. En
                         cas de problèmes, contactez Triangle des Bermudes
                     </p>
