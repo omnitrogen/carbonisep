@@ -74,6 +74,7 @@ function Tips() {
                                 action
                                 variant={i % 2 === 0 ? "dark" : "secondary"}
                                 key={i}
+                                style={{ "font-size": "1.4rem" }}
                             >
                                 {action}
                             </ListGroup.Item>

@@ -36,7 +36,7 @@ class EndGame extends Component {
                         </h2>
                         <h3>
                             Votre résultat a bien été enregistré dans la base de
-                            donée{" "}
+                            donnée{" "}
                         </h3>
                         <p>Votre score : {this.props.score}</p>
                     </div>

@@ -1,4 +1,3 @@
-
 import React, { Component } from "react";
 import { HistoryCard } from "../HistoryCard";
 
@@ -9,26 +8,26 @@ class History extends Component {
         this.state = {
             card1: {
                 name: "",
-                background: 1
+                background: 1,
             },
             card2: {
                 name: "",
-                background: 1
-            }
+                background: 1,
+            },
         };
     }
 
     //On new card chosen, the last card becomes the second last card and the new card becomes the last card
     newCard = (cardData) => {
         this.setState({
-            card2: this.state.card1
+            card2: this.state.card1,
         });
 
         this.setState({
             card1: {
-                name: cardData.name,
-                background: cardData.background
-            }
+                name: cardData.Name,
+                background: cardData.background,
+            },
         });
     };
 
@@ -50,4 +49,3 @@ class History extends Component {
 }
 
 export { History };
-

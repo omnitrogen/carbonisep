@@ -11,42 +11,6 @@ class Participants extends Component {
                         <div className="d-flex flex-wrap ml-2">
                             <Avatar className="m-3" />
                             <Avatar className="m-3" />
-                            <Avatar className="m-3" />
-                            <Avatar className="m-3" />
-                            <Avatar className="m-3" />
-                            <Avatar className="m-3" />
-                            <Avatar className="m-3" />
-                            <Avatar className="m-3" />
-                            <Avatar className="m-3" />
-                            <Avatar className="m-3" />
-                            <Avatar className="m-3" />
-                            <Avatar className="m-3" />
-                            <Avatar className="m-3" />
-                            <Avatar className="m-3" />
-                            <Avatar className="m-3" />
-                            <Avatar className="m-3" />
-                            <Avatar className="m-3" />
-                            <Avatar className="m-3" />
-                            <Avatar className="m-3" />
-                            <Avatar className="m-3" />
-                            <Avatar className="m-3" />
-                            <Avatar className="m-3" />
-                            <Avatar className="m-3" />
-                            <Avatar className="m-3" />
-                            <Avatar className="m-3" />
-                            <Avatar className="m-3" />
-                            <Avatar className="m-3" />
-                            <Avatar className="m-3" />
-                            <Avatar className="m-3" />
-                            <Avatar className="m-3" />
-                            <Avatar className="m-3" />
-                            <Avatar className="m-3" />
-                            <Avatar className="m-3" />
-                            <Avatar className="m-3" />
-                            <Avatar className="m-3" />
-                            <Avatar className="m-3" />
-                            <Avatar className="m-3" />
-                            <Avatar className="m-3" />
                         </div>
                     </div>
                 </div>

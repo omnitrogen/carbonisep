@@ -107,7 +107,11 @@ function Lobby() {
                 <Row className="m-4">
                     <Col style={{ "text-align": "center" }}>
                         {admin && (
-                            <Button variant="success">Start the game</Button>
+                            <Link to="/game">
+                                <Button variant="success">
+                                    Start the game
+                                </Button>
+                            </Link>
                         )}
                     </Col>
                 </Row>

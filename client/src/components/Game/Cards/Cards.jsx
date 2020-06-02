@@ -30,7 +30,7 @@ class Cards extends Component {
 
     handleChosenCard = (cardData) => {
         //Assuming the game will be 10 turns long
-        var continueGame = this.state.turn != 2;
+        var continueGame = this.state.turn != 10;
 
         //The game continues unless it's the last turn, then Game will render the endgame
         this.props.onSelectCard(cardData, continueGame);
@@ -55,7 +55,7 @@ class Cards extends Component {
                                 className="ml-2"
                                 src={argent}
                                 alt="Cout en argent"
-                                style={{ width: '4%', height: '80%' }}
+                                style={{ width: "4%", height: "80%" }}
                             />
                             <p className="ml-3">Score:</p>
                             <p className="font-weight-bold ml-1">
@@ -65,7 +65,7 @@ class Cards extends Component {
                                 className="ml-2"
                                 src={score}
                                 alt="Score actuel"
-                                style={{ width: '4%', height: '80%' }}
+                                style={{ width: "4%", height: "80%" }}
                             />
                         </div>
                     </div>
@@ -77,19 +77,11 @@ class Cards extends Component {
                                 handleSubmit={this.handleChosenCard}
                             />
                             <Card
-                                data={
-                                    this.state.cards[
-                                        this.state.turn * 3 + 1
-                                    ]
-                                }
+                                data={this.state.cards[this.state.turn * 3 + 1]}
                                 handleSubmit={this.handleChosenCard}
                             />
                             <Card
-                                data={
-                                    this.state.cards[
-                                        this.state.turn * 3 + 2
-                                    ]
-                                }
+                                data={this.state.cards[this.state.turn * 3 + 2]}
                                 handleSubmit={this.handleChosenCard}
                             />
                         </div>
