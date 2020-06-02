@@ -7,6 +7,9 @@ export const userActions = {
     login,
     logout,
     register,
+    getQuiz,
+    sendQuiz,
+    getActions,
 };
 
 function login(username, password) {
@@ -67,5 +70,87 @@ function register(user) {
     }
     function failure(error) {
         return { type: userConstants.REGISTER_FAILURE, error };
+    }
+}
+
+function getQuiz() {
+    return (dispatch) => {
+        dispatch(request());
+
+        userService.getQuiz().then(
+            (quiz) => {
+                dispatch(success(quiz));
+                // history.push("/tips");
+                // dispatch(alertActions.success("Quiz successfully filled!"));
+            },
+            (error) => {
+                dispatch(failure(error.toString()));
+                dispatch(alertActions.error(error.toString()));
+            }
+        );
+    };
+
+    function request() {
+        return { type: userConstants.GET_QUIZ_REQUEST };
+    }
+    function success(quiz) {
+        return { type: userConstants.GET_QUIZ_SUCCESS, quiz };
+    }
+    function failure(error) {
+        return { type: userConstants.GET_QUIZ_FAILURE, error };
+    }
+}
+
+function sendQuiz(letter) {
+    return (dispatch) => {
+        dispatch(request(letter));
+
+        userService.sendQuiz(letter).then(
+            (letter) => {
+                dispatch(success(letter));
+                history.push("/tips");
+                dispatch(alertActions.success("Quiz successfully filled!"));
+            },
+            (error) => {
+                dispatch(failure(error.toString()));
+                dispatch(alertActions.error(error.toString()));
+            }
+        );
+    };
+
+    function request(letter) {
+        return { type: userConstants.SEND_QUIZ_REQUEST, letter };
+    }
+    function success(letter) {
+        return { type: userConstants.SEND_QUIZ_SUCCESS, letter };
+    }
+    function failure(error) {
+        return { type: userConstants.SEND_QUIZ_FAILURE, error };
+    }
+}
+
+function getActions(letter) {
+    return (dispatch) => {
+        dispatch(request(letter));
+
+        userService.getActions(letter).then(
+            (actions) => {
+                dispatch(success(actions));
+            },
+            (error) => {
+                dispatch(failure(error.toString()));
+                dispatch(alertActions.error(error.toString()));
+            }
+        );
+    };
+
+    function request(letter) {
+        return { type: userConstants.GET_ACTIONS_REQUEST, letter };
+    }
+    function success(actions) {
+        return { type: userConstants.GET_ACTIONS_SUCCESS, actions };
+    }
+    function failure(error) {
+        return { type: userConstants.GET_ACTIONS_FAILURE, error };
     }
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "react-bootstrap/Navbar";
-import logo from "../../assets/carbonisep.png";
-import triangleBermudes from "../../assets/triangleBermudes.png";
+import logo from "assets/carbonisep.png";
+import triangleBermudes from "assets/triangleBermudes.png";
 
 export default class Footer extends React.Component {
     render() {
