@@ -10,6 +10,7 @@ export const userActions = {
     getQuiz,
     sendQuiz,
     getActions,
+    clearQuiz,
 };
 
 function login(username, password) {
@@ -152,5 +153,14 @@ function getActions(letter) {
     }
     function failure(error) {
         return { type: userConstants.GET_ACTIONS_FAILURE, error };
+    }
+}
+
+function clearQuiz() {
+    return (dispatch) => {
+        dispatch(clear());
+    };
+    function clear() {
+        return { type: userConstants.QUIZ_CLEAR };
     }
 }

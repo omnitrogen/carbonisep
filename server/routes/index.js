@@ -145,7 +145,6 @@ router.post("/get_actions", async (req, res) => {
     const letter = req.body.letter;
     try {
         const actions = model.getActions(letter);
-        console.log("actions :>> ", actions);
         return res
             .status(200)
             .json({ actions: actions.map((action) => action.Name) });
