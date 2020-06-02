@@ -9,7 +9,7 @@
         "clientInstall": "cd client && npm i ",
         "serverInstall": "cd server && npm i ",
         "dev": "concurrently \"npm run server\" \"npm run client\"",
-        "install": "concurrently \"npm run serverInstall\" \"npm run clientInstall\""
+        "installDeps": "concurrently \"npm run serverInstall\" \"npm run clientInstall\""
     },
     "repository": {
         "type": "git",

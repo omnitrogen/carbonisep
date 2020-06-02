@@ -19,6 +19,10 @@ Par l'équipe **Triangle des Bermudes**
 > sudo apt-get install -y nodejs
 > ```
 
+# À modifier car seulement accessible aux contributeurs
+
+omni
+
 2. Télécharger le zip du projet depuis github [ici](https://github.com/omnitrogen/carbonisep/archive/integration.zip)
 
 3. Extraire le zip et ouvrir un terminal dans le dossier `carbonisep-integration`
@@ -37,7 +41,7 @@ Et enfin pour installer les bibliothèques et lancer les serveurs front et back 
 
 ```bash
 npm i
-npm run install
+npm run installDeps # might be long
 npm run start
 ```
 
