@@ -21,16 +21,17 @@ Par l'équipe **Triangle des Bermudes**
 
 2. Télécharger le zip du projet depuis github [ici](https://github.com/omnitrogen/carbonisep/archive/integration.zip).
 
-3. Extraire le zip et ouvrir un terminal dans le dossier `carbonisep-integration/carbonisep-integration`
+3. Extraire le zip et ouvrir un terminal dans le dossier `carbonisep-integration/`
 
 (Sur Windows, dans la barre de recherche, entrer `powershell` puis clic droit sur `Windows PowerShell`, puis `Run as administrator`, puis se déplacer jusqu'au dossier `integration/carbonisep-integration`)
 
 4. Lancer les commandes :
 
-(Commande à rentrer seulement pour Windows. Cela permet d'installer des outils qui servent à compiler les bibliothèques node js.) :
+(Commandes à rentrer seulement pour Windows. Cela permet d'installer des outils qui servent à compiler les bibliothèques node js.) :
 
 ```bash
-npm i -g --production --vs2015 --add-python-to-path windows-build-tools node-gyp # only for Windows
+npm i -g --production --vs2015 --add-python-to-path windows-build-tools # only for windows
+npm i -g --production node-gyp # only for windows
 ```
 
 Et enfin pour installer les bibliothèques et lancer les serveurs front et back :
