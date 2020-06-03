@@ -39,7 +39,7 @@ Et enfin pour installer les bibliothèques et lancer les serveurs front et back 
 ```bash
 npm i
 npm run installDeps # might be long
-npm run start
+npm run dev
 ```
 
 L'application devrait s'ouvrir sur <http://localhost:3000>.
