@@ -23,9 +23,9 @@ Par l'équipe **Triangle des Bermudes**
 
 omni
 
-2. Télécharger le zip du projet depuis github [ici](https://github.com/omnitrogen/carbonisep/archive/integration.zip)
+2. Télécharger le zip du projet depuis github [ici](https://github.com/omnitrogen/carbonisep/archive/integration.zip).
 
-3. Extraire le zip et ouvrir un terminal dans le dossier `carbonisep-integration`
+3. Extraire le zip et ouvrir un terminal dans le dossier `carbonisep-integration/integration`
 
 (Pour Windows, aller avec l'explorateur de fichier dans le dossier `carbonisep-integration` puis clic droit > Ouvrir un terminal ici.)
 
