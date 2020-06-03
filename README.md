@@ -8,9 +8,9 @@ Par l'équipe **Triangle des Bermudes**
 
 **Windows**
 
-> Télécharger l'installer Node.js [ici](https://nodejs.org/dist/v14.4.0/node-v14.4.0-x64.msi), puis l'exécuter.
+> Télécharger l'installer Node.js 14 [ici](https://nodejs.org/dist/v14.4.0/node-v14.4.0-x64.msi), puis l'exécuter.
 
-> Pour vérifier l'installation, ouvrir un terminal et y écrire `node -v` et `npm -v`, cela devrait afficher les versions de node et npm.
+> Pour vérifier l'installation, ouvrir un powershell et y écrire `node -v` et `npm -v`, cela devrait afficher les versions de node et npm.
 
 **Ubuntu**
 
@@ -19,22 +19,18 @@ Par l'équipe **Triangle des Bermudes**
 > sudo apt-get install -y nodejs
 > ```
 
-# À modifier car seulement accessible aux contributeurs
-
-omni
-
 2. Télécharger le zip du projet depuis github [ici](https://github.com/omnitrogen/carbonisep/archive/integration.zip).
 
-3. Extraire le zip et ouvrir un terminal dans le dossier `carbonisep-integration/integration`
+3. Extraire le zip et ouvrir un terminal dans le dossier `carbonisep-integration/carbonisep-integration`
 
-(Pour Windows, aller avec l'explorateur de fichier dans le dossier `carbonisep-integration` puis clic droit > Ouvrir un terminal ici.)
+(Sur Windows, dans la barre de recherche, entrer `powershell` puis clic droit sur `Windows PowerShell`, puis `Run as administrator`, puis se déplacer jusqu'au dossier `integration/carbonisep-integration`)
 
 4. Lancer les commandes :
 
 (Commande à rentrer seulement pour Windows. Cela permet d'installer des outils qui servent à compiler les bibliothèques node js.) :
 
 ```bash
-npm install --global --production windows-build-tools # only for Windows
+npm i -g --production --vs2015 --add-python-to-path windows-build-tools node-gyp # only for Windows
 ```
 
 Et enfin pour installer les bibliothèques et lancer les serveurs front et back :
