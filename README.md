@@ -30,8 +30,7 @@ Par l'équipe **Triangle des Bermudes**
 (Commandes à rentrer seulement pour Windows. Cela permet d'installer des outils qui servent à compiler les bibliothèques node js.) :
 
 ```bash
-npm i -g --production --vs2015 --add-python-to-path windows-build-tools # only for windows
-npm i -g --production node-gyp # only for windows
+npm i -g windows-build-tools node-gyp # only for windows
 ```
 
 Et enfin pour installer les bibliothèques et lancer les serveurs front et back :
